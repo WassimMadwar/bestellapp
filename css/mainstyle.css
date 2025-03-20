@@ -1,48 +1,10 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    scroll-behavior: smooth;
-    
-}
 
-a {
-    color: #FD5B4F;
-    text-decoration: none;
-}
 
-body{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-header {
-    background-color: rgba(127, 255, 212, 0.712);
-    height: fit-content;
-}
-
-button {
-    border: none;
-}
-
-button:hover {
-    cursor: pointer;
-    border: 1px solid red;
-}
-
-#headerContent {
-    max-width: 1440px;
-    padding: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-}
 
 main {
     max-width: 1440px;
     margin: 0 auto;
-    flex: 1;
+    /* flex: 1; */
 
 }
 

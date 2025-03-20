@@ -3,20 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="./css/addnew.css" /> -->
+    <link rel="stylesheet" href="./css/standerstyle.css">
     <link rel="stylesheet" href="./css/mainstyle.css" />
-    <title>Notepad</title>
+    <link rel="stylesheet" href="./css/headarstyle.css">
+    <title>Bestell App</title>
   </head>
   <body>
     <header>
       <div id="headerContent">
-        <h1>Book Store</h1>
+        <div id="nameApp">
+          <h1>Bestell App</h1>
+        </div>
+          <div id="menuToggle" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <nav id="menu" class="menuBox menuClosed">
+          <a href="./index.html">Start</a>
+          <a href="#">Kontakt</a>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutzerklärung</a>
+        </nav>
       </div>
     </header>
     <main></main>
     <footer></footer>
-    <script src="./script/dbscript.js"></script>
-    <script src="./script/hedearscript.js"></script>
-    <script src="./script/mainscript.js"></script>
+    <script src="./script/templaet.js"></script>
   </body>
 </html>
