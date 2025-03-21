@@ -16,11 +16,11 @@ button {
 
 button:hover {
     cursor: pointer;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -33,4 +33,17 @@ button:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(127, 255, 212);
+}
+
+.dNonoe{
+    display: none;
+}
+
+.maxWidth{
+    max-width: 100%;
+}
+
+.CT{
+    color: #FD5B4F;
+    cursor: pointer;
 }

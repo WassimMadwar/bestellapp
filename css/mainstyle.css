@@ -1,13 +1,93 @@
-
-
-
-main {
+#main {
     max-width: 1440px;
     margin: 0 auto;
+    /* height: 100vh; */
     /* flex: 1; */
+    display: flex;
+    background-color: rgba(0, 0, 255, 0.23);
 
 }
 
+/* secMeals
+secOrder */
+#secMeals {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 0, 0, 0.143);
+    min-height: 900px;
+    width: calc(100% - 300px);
+}
+
+#secBasket {
+    /* display: flex;
+    flex-direction: column; */
+    background-color: rgba(76, 0, 255, 0.15);
+    width: 300px;
+    right: 0;
+    border: 1px solid #FD5B4F;
+    /* flex: 1; */
+    flex-grow: 1;
+}
+
+#artBasket {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0px;
+}
+
+#headerBasket {
+    padding: 8px;
+    /* font-size: large; */
+    align-self: center;
+}
+
+#mainBasket {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+}
+
+.artOrder {
+    padding: 8px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid;
+}
+
+.infoDish {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ctrAmount {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.ctr {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+}
+
+.icoDelete {
+    color: #FD5B4F;
+    display: flex;
+    align-items: center;
+}
+
+#footerBasket {}
+
+
+
+
+
+/* 
 article {
     display: flex;
     flex-direction: column;
@@ -82,4 +162,4 @@ article:hover {
     padding-bottom: 12px;
     font-size: 18px;
 
-}
+} */

@@ -1,4 +1,4 @@
-header {
+#header {
     background-color: rgba(127, 255, 212, 0.712);
     box-shadow: #fd5b4f87 1.95px 1.95px 2.6px;
     position: relative;
@@ -99,7 +99,7 @@ nav a:hover {
     }
 
     .menuClosed {
-        transform: translatey(-140%);
+        transform: translatey(-145%);
     }
 
     .menuBox {
@@ -109,12 +109,13 @@ nav a:hover {
         flex-direction: column;
         width: 100%;
         height: fit-content;
-        background-color: #efefeff9;
+        background-color: #efefeff6;
         right: 0;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
         transition: all 75ms ease-in-out;
         padding-bottom: 18px;
+        z-index: 1;
     }
 
     #menu {
