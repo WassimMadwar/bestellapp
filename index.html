@@ -78,35 +78,45 @@
               </article>
             </section>
             <section>
-              <div class="invoice">
-                <span id="lblPrices">Zwischensume</span>
-                <span id="prices">115,8</span>
-              </div>
-              <div class="invoice">
-                <span id="lblDelevr">Lieferkosten</span>
-                <span id="delver">5,00</span>
-              </div>
-              <div class="invoice">
-                <span id="lblTotal"></span><b>Gesamt</b>
-                <span id="total"><b>120,8</b></span>
-              </div>
+              <article id="artInvoice">
+                <div class="invoice">
+                  <span id="lblPrices">Zwischensume</span>
+                  <span id="prices">115,8</span>
+                </div>
+                <div class="invoice">
+                  <span id="lblDelevr">Lieferkosten</span>
+                  <span id="delver">5,00</span>
+                </div>
+              </article>
+
             </section>
           </main>
-          <footer id="footerBasket">
-            <button id="btnBay" type="submit">
-              Zur Kase
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                fill="currentColor"
-              >
-                <path
-                  d="M7 4h-2v2h2v2h2v-2h2v-2h-2v-2h-2v2zm13.21 3.37a1 1 0 0 0-.79-.37h-12.17l-.94-2h-3.31v2h2.17l4.33 9.32c.09.19.26.34.46.41.2.07.42.04.6-.07l.07-.04h7.63a1 1 0 0 0 1-.79l1.47-6.21a1 1 0 0 0-.22-.87zm-2.59 6.63h-6.85l-2.37-5h10.39l-1.17 5zm-9.62 3a1.5 1.5 0 1 0 1.5 1.5 1.5 1.5 0 0 0-1.5-1.5zm7 0a1.5 1.5 0 1 0 1.5 1.5 1.5 1.5 0 0 0-1.5-1.5z"
-                />
-              </svg>
-            </button>
+          <footer >
+            <section id="secFooterBasket">
+              <article id="artTotal">
+                <div class="separtor"></div>
+                <div class="invoice" id="totalInvoice">
+                  <span id="lblTotal"><b>Gesamt</b></span>
+                  <span id="total"><b>120,8</b></span>
+                </div>
+              </article>
+              <article id="toKase">
+                <button id="btnBay" type="submit">
+                  Zur Kase
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M7 4h-2v2h2v2h2v-2h2v-2h-2v-2h-2v2zm13.21 3.37a1 1 0 0 0-.79-.37h-12.17l-.94-2h-3.31v2h2.17l4.33 9.32c.09.19.26.34.46.41.2.07.42.04.6-.07l.07-.04h7.63a1 1 0 0 0 1-.79l1.47-6.21a1 1 0 0 0-.22-.87zm-2.59 6.63h-6.85l-2.37-5h10.39l-1.17 5zm-9.62 3a1.5 1.5 0 1 0 1.5 1.5 1.5 1.5 0 0 0-1.5-1.5zm7 0a1.5 1.5 0 1 0 1.5 1.5 1.5 1.5 0 0 0-1.5-1.5z"
+                    />
+                  </svg>
+                </button>
+              </article>
+            </section>
           </footer>
         </article>
       </section>
