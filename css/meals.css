@@ -5,7 +5,7 @@
 }
 
 #mainImg {
-    height: 220px;
+    height: 234px;
     width: 100%;
     object-fit: cover;
     margin: 0;
@@ -49,6 +49,8 @@
     box-shadow: rgb(127, 255, 212, 0.712) 1.95px 1.95px 8.6px;
     border-radius: 25px;
     padding: 6px;
+    margin-bottom: 26px;
+
 }
 
 .formDesh:hover {
@@ -69,7 +71,7 @@
 }
 
 .imgDesh {
-    height: 200px;
+    height: 160px;
     border-radius: 25px;
     margin-right: 19px;
     margin-top: 19px;
