@@ -1,21 +1,10 @@
-
-
-
 /* Section Basket start */
 
 #secBasket {
     width: 300px;
     right: 0;
     border: 1px solid #FD5B4F;
-
 }
-#secMeals {
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255, 0, 0, 0.143);
-    width: calc(100% - 300px);
-}
-
 
 #artBasket {
     display: flex;
@@ -23,7 +12,6 @@
     position: sticky;
     top: 0px;
     min-height: 100vh;
-
 }
 
 /* ------- */
@@ -34,7 +22,6 @@
     justify-content: center;
     border-bottom: 1px solid black;
     width: 100%;
-
 }
 
 #headerBasket svg {
@@ -106,7 +93,7 @@
 } */
 
 
-#totalInvoice{
+#totalInvoice {
     padding: 12px;
 }
 

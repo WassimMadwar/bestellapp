@@ -1,0 +1,6 @@
+#secMeals {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 0, 0, 0.143);
+    width: calc(100% - 300px);
+}
