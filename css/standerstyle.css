@@ -47,3 +47,23 @@ button:hover {
     color: #FD5B4F;
     cursor: pointer;
 }
+
+.separtor {
+    height: 2px;
+    background-color: #FD5B4F;
+}
+
+
+#main {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+}
+
+/* to delete */
+.testblok{
+    width: 200px;
+    height: 600px;
+    background-color: red;
+    margin: 10px;
+}

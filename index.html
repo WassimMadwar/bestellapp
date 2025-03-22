@@ -9,8 +9,9 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/standerstyle.css" />
-    <link rel="stylesheet" href="./css/headarstyle.css" />
-    <link rel="stylesheet" href="./css/mainstyle.css" />
+    <link rel="stylesheet" href="./css/headar.css" />
+    <link rel="stylesheet" href="./css/basket.css" />
+    <link rel="stylesheet" href="./css/meals.css" />
     <title>Bestell App</title>
   </head>
   <body>
@@ -33,7 +34,12 @@
       </div>
     </header>
     <main id="main">
-      <section id="secMeals"></section>
+      <section id="secMeals">
+        <div class="testblok"></div>
+        <div class="testblok"></div>
+        <div class="testblok"></div>
+        <div class="testblok"></div>
+      </section>
       <section id="secBasket">
         <article id="artBasket">
           <header id="headerBasket">
@@ -88,10 +94,9 @@
                   <span id="delver">5,00</span>
                 </div>
               </article>
-
             </section>
           </main>
-          <footer >
+          <footer id="footerBasket">
             <section id="secFooterBasket">
               <article id="artTotal">
                 <div class="separtor"></div>
@@ -100,24 +105,42 @@
                   <span id="total"><b>120,8</b></span>
                 </div>
               </article>
-              <article id="toKase">
-                <button id="btnBay" type="submit">
-                  Zur Kase
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M7 4h-2v2h2v2h2v-2h2v-2h-2v-2h-2v2zm13.21 3.37a1 1 0 0 0-.79-.37h-12.17l-.94-2h-3.31v2h2.17l4.33 9.32c.09.19.26.34.46.41.2.07.42.04.6-.07l.07-.04h7.63a1 1 0 0 0 1-.79l1.47-6.21a1 1 0 0 0-.22-.87zm-2.59 6.63h-6.85l-2.37-5h10.39l-1.17 5zm-9.62 3a1.5 1.5 0 1 0 1.5 1.5 1.5 1.5 0 0 0-1.5-1.5zm7 0a1.5 1.5 0 1 0 1.5 1.5 1.5 1.5 0 0 0-1.5-1.5z"
-                    />
-                  </svg>
-                </button>
-              </article>
             </section>
           </footer>
+        </article>
+        <article id="artKase">
+          <button id="btnBuy" class="CT" type="submit">
+            Zur Kasse
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.87 274.78">
+              <defs>
+                <style>
+                  .d {
+                    fill: #fff;
+                  }
+                  .e {
+                    fill: currentColor;
+                  }
+                </style>
+              </defs>
+              <g id="a" />
+              <g id="b">
+                <g id="c">
+                  <circle class="e" cx="361.74" cy="221.84" r="21.29" />
+                  <path
+                    class="e"
+                    d="M110.2,99.53l84.48,132.08c2.92,4.57,8.55,6.61,13.72,4.98l167.07-52.61c5-1.57,8.4-6.21,8.4-11.45v-10.83c0-8.02-7.72-13.79-15.41-11.51l-143.07,42.29c-5.28,1.56-10.94-.67-13.74-5.41l-4.33-7.32c-3.93-6.65-.64-15.24,6.73-17.56l161.41-50.83c5-1.57,8.4-6.21,8.4-11.45v-16.58c0-8.12-7.89-13.9-15.63-11.45l-179.51,56.87c-7.2,2.28-15.03-.71-18.87-7.21l-2.56-4.33c-3.92-6.63-.66-15.19,6.67-17.54L375.53,35.12c4.97-1.59,8.34-6.21,8.34-11.43V12.01c0-8.14-7.94-13.92-15.69-11.43L116.63,81.63c-7.49,2.41-10.67,11.27-6.43,17.9Z"
+                  />
+                  <path
+                    class="e"
+                    d="M107.17,73.23l8.48-3.16c8.14-3.04,11.29-12.91,6.4-20.1L93.02,7.27c-3.27-4.82-9.28-6.97-14.87-5.32L9.62,22.11C2.98,24.06-1.08,30.75,.25,37.54l2.51,12.84c1.58,8.06,9.97,12.82,17.7,10.04l41.49-14.94c5.46-1.96,11.56-.2,15.12,4.38l14.83,19.05c3.6,4.62,9.78,6.37,15.27,4.32Z"
+                  />
+                  <circle class="e" cx="252.03" cy="253.49" r="21.29" />
+                  <circle class="d" cx="252.03" cy="253.49" r="10.37" />
+                  <circle class="d" cx="361.74" cy="221.84" r="10.37" />
+                </g>
+              </g>
+            </svg>
+          </button>
         </article>
       </section>
     </main>
