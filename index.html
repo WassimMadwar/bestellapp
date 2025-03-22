@@ -8,10 +8,10 @@
       type="image/x-icon"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/standerstyle.css" />
     <link rel="stylesheet" href="./css/headar.css" />
     <link rel="stylesheet" href="./css/basket.css" />
     <link rel="stylesheet" href="./css/meals.css" />
+    <link rel="stylesheet" href="./css/standerstyle.css" />
     <title>Bestell App</title>
   </head>
   <body>
@@ -34,7 +34,7 @@
       </div>
     </header>
     <main id="main">
-      <section id="secMeals">
+      <section id="secMeal" class="secMeals">
         <header id="headerMeals">
           <div>
             <img id="mainImg" src="./assets/img/pizzanapoli.jpeg" alt="" />
@@ -71,7 +71,7 @@
                   />
                   <h4>"Noodel"</h4>
                 </div>
-                <div class="Kategor" >
+                <div class="Kategor">
                   <img
                     class="imgKategor"
                     src="./assets/img/kategore/sandwish.webp"
@@ -86,22 +86,41 @@
           <section>
             <form class="formDesh" action="">
               <div class="infoDesh">
-                <h3>desh name </h3>
+                <h3>desh name</h3>
                 <p>kurz beschreibung</p>
                 <span class="priceDesh">12334€</span>
               </div>
               <div>
-                <img class="imgDesh" src="./assets/img/rucolasalat.webp" alt="" />
-                <button type="submit">+</button>
+                <img
+                  class="imgDesh"
+                  src="./assets/img/rucolasalat.webp"
+                  alt=""
+                />
+                <button class="btnAddMeale" type="submit">+</button>
+              </div>
+            </form>
+          </section>
+          <section>
+            <form class="formDesh" action="">
+              <div class="infoDesh">
+                <h3>desh name</h3>
+                <p>kurz beschreibung</p>
+                <span class="priceDesh">12334€</span>
+              </div>
+              <div>
+                <img
+                  class="imgDesh"
+                  src="./assets/img/rucolasalat.webp"
+                  alt=""
+                />
+                <button class="btnAddMeale" type="submit">+</button>
               </div>
             </form>
           </section>
         </main>
-        <div class="testblok"></div>
-        <div class="testblok"></div>
-        <div class="testblok"></div>
         <footer id="footerMeals">ctr next page</footer>
       </section>
+
       <section id="secBasket">
         <article id="artBasket">
           <header id="headerBasket">
@@ -210,3 +229,6 @@
     <script src="./script/templaet.js"></script>
   </body>
 </html>
+
+<!-- 
+-->

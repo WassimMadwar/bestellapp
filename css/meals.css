@@ -1,11 +1,11 @@
-#secMeals {
+.secMeals {
     display: flex;
     flex-direction: column;
     width: calc(100% - 300px);
 }
 
 #mainImg {
-    height: 300px;
+    height: 220px;
     width: 100%;
     object-fit: cover;
     margin: 0;
@@ -14,7 +14,6 @@
 #mainMeals {
     margin: 0;
     padding: 0 10px;
-    background-color: rgba(127, 255, 212, 0.125);
 }
 
 #Kategorien {
@@ -34,13 +33,6 @@
     align-items: center;
 }
 
-/* .Kategor:hover{ */
-.imgKategor:hover {
-    padding: 3px;
-    cursor: pointer;
-    border: 2px solid #FD5B4F;
-    border-radius: 100%;
-}
 
 .onSelect {
     padding: 3px;
@@ -49,14 +41,56 @@
     color: #FD5B4F;
 }
 
-.formDesh{
-display: flex;
-justify-content: space-between;
-margin: 12px 0;
-/* border: 1px solid rgb(127, 255, 212, 0.712); */
-border: 1px solid red;
-padding: 6px ;
+.formDesh {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    box-shadow: rgb(127, 255, 212, 0.712) 1.95px 1.95px 8.6px;
+    border-radius: 25px;
+    padding: 6px;
 }
-.imgDesh{
-    height: 220px;
+
+.formDesh:hover {
+    background-color: rgba(127, 255, 212, 0.163);
 }
+.infoDesh {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 11px;
+    margin-bottom: 11px;
+    padding-left: 11px;
+}
+
+.infoDesh :last-child{
+    font-weight: bold;
+    color: gold;
+}
+
+.imgDesh {
+    height: 200px;
+    border-radius: 25px;
+    margin-right: 19px;
+    margin-top: 19px;
+}
+
+.btnAddMeale {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 30px;
+    font-weight: bold;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FD5B4F;
+    background-color: rgb(127, 255, 212);
+    padding-top: 12px;
+    padding-bottom: 19px;
+}
+
