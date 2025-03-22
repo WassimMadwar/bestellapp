@@ -1,6 +1,18 @@
 #secMeals {
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 0, 0, 0.143);
     width: calc(100% - 300px);
+}
+
+#mainImg{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    margin: 0;
+}
+
+#mainMeals{
+    margin: 0;
+    padding: 0 10px ;
+    background-color: rgba(127, 255, 212, 0.125);
 }
