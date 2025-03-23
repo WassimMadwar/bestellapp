@@ -7,6 +7,11 @@ const links = [
 
 const categories = [
   {
+    src: "./assets/img/kategore/alle.webp",
+    text: "Alle",
+    category: "All",
+  },
+  {
     src: "./assets/img/kategore/sandwish.webp",
     text: "Sandwish",
     category: "Sandwich",

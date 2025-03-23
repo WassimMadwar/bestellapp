@@ -144,7 +144,7 @@ function createMainMeals() {
   const dishesList = document.createElement("section");
   dishesList.id = "dishesList";
 
-  mainMeals.append(secCategories,dishesList);
+  mainMeals.append(secCategories, dishesList);
 
   return mainMeals;
 }
@@ -197,17 +197,28 @@ function getCategories() {
 function setCategorySettings(src, text, category, i) {
   const img = document.createElement("img");
   img.className = "imgCategory";
-  img.id = category + i;
+  const imgID = category + i;
+  img.id = imgID;
   // Hier i will sent the index of category to the onClick function ,they will be list of Meals creation
-  img.onclick = () => createMealSection(i);
+  img.onclick = () => isSelectedCategory(imgID);
   img.src = src;
   img.alt = "";
   img.title = `${text} Liste anzeigen`;
   return img;
 }
 
-function createMealSection(i) {
-  const section = document.getElementById('dishesList');
+function isSelectedCategory(imgID) {
+  const imgCategory = document.getElementById(imgID);
+  if (imgCategory.classList.contains('onSelected')) {
+    imgCategory.classList.remove('onSelected');
+    
+  } else {
+    imgCategory.classList.add('onSelected');
+  }
+}
+
+function createMealSection() {
+  const section = document.getElementById("dishesList");
   const form = document.createElement("form");
   form.className = "formDish";
 
@@ -239,6 +250,9 @@ function createMealSection(i) {
   form.append(infoDiv, imgDiv);
   section.appendChild(form);
   // return section;
+}
+function removeCategory(params) {
+  // fun remve category list from dishesList
 }
 
 function createFooterMeals() {
