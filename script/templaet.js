@@ -116,12 +116,12 @@ function createSecMeal() {
   secMeal.id = "secMeal";
   secMeal.className = "secMeals";
   const headerMeals = createHeaderSecMeals();
-  // const mainMeals = createMainMeals();
+  const mainMeals = createMainMeals();
   // const footerMeals = createFooterMeals();
   // console.log(createHeaderSecMeals());
 
-  // secMeal.append(headerMeals, mainMeals, footerMeals);
-  secMeal.appendChild(headerMeals);
+  secMeal.append(headerMeals, mainMeals);
+  // secMeal.appendChild(headerMeals);
   return secMeal;
 }
 
@@ -153,42 +153,54 @@ function setImgMain(imgSrc, imgClass) {
   return div;
 }
 
+
+// +***************************************************************************
+
 function createMainMeals() {
   const mainMeals = document.createElement("main");
   mainMeals.id = "mainMeals";
+  const secCategories = createSectionCategories();
 
-  const sectionForm = createFormSection();
-  const meal1 = createMealSection();
-  const meal2 = createMealSection();
+  // const meal1 = createMealSection();
+  // const meal2 = createMealSection();
 
-  mainMeals.append(sectionForm, meal1, meal2);
+  // mainMeals.append(sectionForm, meal1, meal2);
+  mainMeals.append(secCategories);
   return mainMeals;
 }
 
-function createFormSection() {
+function createSectionCategories() {
   const section = document.createElement("section");
+  const frmCategories =createFormCategories();
+  const seperter = document.createElement("div");
+  seperter.className = "separtor"
+  section.append(frmCategories,seperter);
+  
+  return section;
+}
+function createFormCategories() {
   const form = document.createElement("form");
   const legend = document.createElement("legend");
   const h1 = document.createElement("h1");
   h1.textContent = "Paradise des Bauches";
   legend.appendChild(h1);
 
-  const kategorien = document.createElement("div");
-  kategorien.id = "Kategorien";
+  const divCategories = getCategories();
 
-  const categories = [
-    { src: "./assets/img/kategore/sandwish.webp", text: "Sandwish" },
-    { src: "./assets/img/kategore/pizza.webp", text: "Pizza" },
-    { src: "./assets/img/kategore/noodel.webp", text: "Noodel" },
-    { src: "./assets/img/kategore/sandwish.webp", text: "Salat" },
-  ];
+  form.append(legend, divCategories);
+  return form;
+}
+
+function getCategories() {
+  const divCategories = document.createElement("div");
+  divCategories.id = "Categories";
 
   categories.forEach(({ src, text }) => {
     const div = document.createElement("div");
-    div.className = "Kategor";
+    div.className = "Category";
 
     const img = document.createElement("img");
-    img.className = "imgKategor";
+    img.className = "imgCategory";
     img.src = src;
     img.alt = "";
 
@@ -196,12 +208,9 @@ function createFormSection() {
     h4.textContent = `"${text}"`;
 
     div.append(img, h4);
-    kategorien.appendChild(div);
+    divCategories.appendChild(div);
   });
-
-  form.append(legend, kategorien);
-  section.append(form, document.createElement("div")).className = "separtor";
-  return section;
+  return divCategories;
 }
 
 function createMealSection() {

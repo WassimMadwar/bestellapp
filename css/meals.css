@@ -16,18 +16,18 @@
     padding: 0 10px;
 }
 
-#Kategorien {
+#Categories {
     display: flex;
     justify-content: space-evenly;
     padding: 16px 0;
 }
 
-.imgKategor {
+.imgCategory {
     height: 80px;
     border-radius: 100%;
 }
 
-.Kategor {
+.Category {
     display: flex;
     flex-direction: column;
     align-items: center;
