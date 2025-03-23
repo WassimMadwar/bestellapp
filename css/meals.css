@@ -41,7 +41,7 @@
     color: #FD5B4F;
 }
 
-.formDesh {
+.formDish {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -53,10 +53,10 @@
 
 }
 
-.formDesh:hover {
+.formDish:hover {
     background-color: rgba(127, 255, 212, 0.163);
 }
-.infoDesh {
+.dataDish {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -65,12 +65,12 @@
     padding-left: 11px;
 }
 
-.infoDesh :last-child{
+.dataDish :last-child{
     font-weight: bold;
     color: gold;
 }
 
-.imgDesh {
+.imgDish {
     height: 160px;
     border-radius: 25px;
     margin-right: 19px;

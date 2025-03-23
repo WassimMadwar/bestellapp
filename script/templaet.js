@@ -6,32 +6,11 @@ function toggleMenu() {
 
 window.onload = loadContent;
 
-// const header = document.createElement("header");
-// const main = document.createElement("main");
-// const footer = document.createElement("footer");
-
-// const sec = document.createElement("section");
-
-// const div = document.createElement("div");
-
-// const art = document.createElement("article");
-// const lege = document.createElement("legend");
-
-// const link = document.createElement("a");
-
-// const img = document.createElement("img");
-
-// const Archiv = document.createElement("h2");
-
-// const idNote = document.createElement("span");
-
-// const btn = document.createElement("button");
-
 function loadContent() {
   const body = document.body;
   const header = createHeader();
   const main = createMain();
-  body.append(header,main);
+  body.append(header, main);
   // body.appendChild(header);
   // body.appendChild(main);
 }
@@ -106,23 +85,24 @@ function createMain() {
   const main = document.createElement("main");
   main.id = "main";
 
-  const secMeal = createSecMeal();
-  main.appendChild(secMeal);
+  const secMeals = createSecMeals();
+  // const secBasket= createSecBasket();
+  main.appendChild(secMeals);
   return main;
 }
 
-function createSecMeal() {
-  const secMeal = document.createElement("section");
-  secMeal.id = "secMeal";
-  secMeal.className = "secMeals";
+function createSecMeals() {
+  const secMeals = document.createElement("section");
+  secMeals.id = "secMeals";
+  secMeals.className = "secMeals";
   const headerMeals = createHeaderSecMeals();
   const mainMeals = createMainMeals();
   // const footerMeals = createFooterMeals();
   // console.log(createHeaderSecMeals());
 
-  secMeal.append(headerMeals, mainMeals);
+  secMeals.append(headerMeals, mainMeals);
   // secMeal.appendChild(headerMeals);
-  return secMeal;
+  return secMeals;
 }
 
 function createHeaderSecMeals() {
@@ -136,7 +116,7 @@ function createHeaderSecMeals() {
 
   header.appendChild(divImgHeaderSecMeals);
   console.log(header);
-  
+
   return header;
 }
 // +***************************************************************************
@@ -153,31 +133,35 @@ function setImgMain(imgSrc, imgClass) {
   return div;
 }
 
-
 // +***************************************************************************
 
 function createMainMeals() {
   const mainMeals = document.createElement("main");
   mainMeals.id = "mainMeals";
+
   const secCategories = createSectionCategories();
 
-  // const meal1 = createMealSection();
-  // const meal2 = createMealSection();
+  const dishesList = document.createElement("section");
+  dishesList.id = "dishesList";
 
-  // mainMeals.append(sectionForm, meal1, meal2);
-  mainMeals.append(secCategories);
+  mainMeals.append(secCategories,dishesList);
+
   return mainMeals;
 }
 
 function createSectionCategories() {
   const section = document.createElement("section");
-  const frmCategories =createFormCategories();
+
+  const frmCategories = createFormCategories();
+
   const seperter = document.createElement("div");
-  seperter.className = "separtor"
-  section.append(frmCategories,seperter);
-  
+  seperter.className = "separtor";
+
+  section.append(frmCategories, seperter);
+
   return section;
 }
+
 function createFormCategories() {
   const form = document.createElement("form");
   const legend = document.createElement("legend");
@@ -195,14 +179,11 @@ function getCategories() {
   const divCategories = document.createElement("div");
   divCategories.id = "Categories";
 
-  categories.forEach(({ src, text }) => {
+  categories.forEach(({ src, text, category }, i) => {
     const div = document.createElement("div");
     div.className = "Category";
 
-    const img = document.createElement("img");
-    img.className = "imgCategory";
-    img.src = src;
-    img.alt = "";
+    const img = setCategorySettings(src, text, category, i);
 
     const h4 = document.createElement("h4");
     h4.textContent = `"${text}"`;
@@ -213,27 +194,39 @@ function getCategories() {
   return divCategories;
 }
 
-function createMealSection() {
-  const section = document.createElement("section");
+function setCategorySettings(src, text, category, i) {
+  const img = document.createElement("img");
+  img.className = "imgCategory";
+  img.id = category + i;
+  // Hier i will sent the index of category to the onClick function ,they will be list of Meals creation
+  img.onclick = () => createMealSection(i);
+  img.src = src;
+  img.alt = "";
+  img.title = `${text} Liste anzeigen`;
+  return img;
+}
+
+function createMealSection(i) {
+  const section = document.getElementById('dishesList');
   const form = document.createElement("form");
-  form.className = "formDesh";
+  form.className = "formDish";
 
   const infoDiv = document.createElement("div");
-  infoDiv.className = "infoDesh";
+  infoDiv.className = "dataDish";
 
   const h3 = document.createElement("h3");
-  h3.textContent = "desh name";
+  h3.textContent = "dish name";
   const p = document.createElement("p");
   p.textContent = "kurz beschreibung";
   const price = document.createElement("span");
-  price.className = "priceDesh";
+  price.className = "priceDish";
   price.textContent = "12334€";
 
   infoDiv.append(h3, p, price);
 
   const imgDiv = document.createElement("div");
   const img = document.createElement("img");
-  img.className = "imgDesh";
+  img.className = "imgDish";
   img.src = "./assets/img/rucolasalat.webp";
   img.alt = "";
 
@@ -245,7 +238,7 @@ function createMealSection() {
   imgDiv.append(img, button);
   form.append(infoDiv, imgDiv);
   section.appendChild(form);
-  return section;
+  // return section;
 }
 
 function createFooterMeals() {
