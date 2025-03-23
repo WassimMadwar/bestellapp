@@ -13,6 +13,7 @@ function loadContent() {
   body.append(header, main);
   // body.appendChild(header);
   // body.appendChild(main);
+  createAllCategories();
 }
 
 // #########################################################
@@ -98,7 +99,6 @@ function createSecMeals() {
   const headerMeals = createHeaderSecMeals();
   const mainMeals = createMainMeals();
   // const footerMeals = createFooterMeals();
-  // console.log(createHeaderSecMeals());
 
   secMeals.append(headerMeals, mainMeals);
   // secMeal.appendChild(headerMeals);
@@ -115,7 +115,6 @@ function createHeaderSecMeals() {
   );
 
   header.appendChild(divImgHeaderSecMeals);
-  console.log(header);
 
   return header;
 }
@@ -199,26 +198,46 @@ function setCategorySettings(src, text, category, i) {
   img.className = "imgCategory";
   const imgID = category + i;
   img.id = imgID;
-  // Hier i will sent the index of category to the onClick function ,they will be list of Meals creation
-  img.onclick = () => isSelectedCategory(imgID);
+  // Hier i will sent the  category to the onClick function ,they will be list of Meals category
+  img.onclick = () => isSelectedCategory(imgID, category);
   img.src = src;
   img.alt = "";
   img.title = `${text} Liste anzeigen`;
   return img;
 }
 
-function isSelectedCategory(imgID) {
+function isSelectedCategory(imgID, category) {
   const imgCategory = document.getElementById(imgID);
-  if (imgCategory.classList.contains('onSelected')) {
-    imgCategory.classList.remove('onSelected');
-    
+  if (imgCategory.classList.contains("onSelected")) {
+    imgCategory.classList.remove("onSelected");
   } else {
-    imgCategory.classList.add('onSelected');
+    imgCategory.classList.add("onSelected");
   }
 }
+function createAllCategories() {
+  const dishesList = document.getElementById("dishesList");
+  allMeals.forEach((cate) => {
+    const secCategory = addCategoryList(cate.dishes);
+    const Id = cate.category;
+    secCategory.id = `sec${Id}`;
+    // dishesList.appendChild(secCategory);
+    // console.log(secCategory.id );
+  });
+}
 
-function createMealSection() {
-  const section = document.getElementById("dishesList");
+function addCategoryList(arrDishes) {
+  const secCategory = document.createElement("section");
+  arrDishes.forEach((dish)=>{
+    const frmDish = addFormDish(dish);
+    frmDish.id=`frmDish${dish.Id}`;
+    console.log(frmDish.id);
+    
+  });
+  return secCategory;
+}
+
+function addFormDish(objDish) {
+  // const section = document.getElementById("dishesList"); worng
   const form = document.createElement("form");
   form.className = "formDish";
 
@@ -248,8 +267,7 @@ function createMealSection() {
 
   imgDiv.append(img, button);
   form.append(infoDiv, imgDiv);
-  section.appendChild(form);
-  // return section;
+  return form;
 }
 function removeCategory(params) {
   // fun remve category list from dishesList
