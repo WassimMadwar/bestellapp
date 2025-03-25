@@ -3,6 +3,7 @@ function toggleMenu() {
   const menu = document.getElementById("menu");
   menu.classList.toggle("menuClosed");
 }
+let count = 1;
 
 window.onload = loadContent;
 
@@ -139,8 +140,10 @@ function createMainMeals() {
   const dishesList = document.createElement("section");
   dishesList.id = "dishesList";
 
-  mainMeals.append(secCategories, dishesList);
-  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  const secSelectedCate = document.createElement("section");
+  secSelectedCate.id = "secSelectedCate";
+
+  mainMeals.append(secCategories, dishesList, secSelectedCate);
   return mainMeals;
 }
 
@@ -149,10 +152,10 @@ function createSectionCategories() {
 
   const frmCategories = createFormCategories();
 
-  const seperter = document.createElement("div");
-  seperter.className = "separtor";
+  const separtor = document.createElement("div");
+  separtor.className = "separtor";
 
-  section.append(frmCategories, seperter);
+  section.append(frmCategories, separtor);
 
   return section;
 }
@@ -194,8 +197,6 @@ function setCategorySettings(src, text, category, i) {
   const imgID = category + i;
   img.id = imgID;
   img.onclick = () => switchCategories(category, imgID);
-  console.log(imgID);
-
   img.src = src;
   img.alt = "";
   img.title = `${text} Liste anzeigen`;
@@ -203,25 +204,44 @@ function setCategorySettings(src, text, category, i) {
 }
 
 function createAllCategories() {
-  activeAllSelected();
+  const allImg = document.getElementById("All0");
+  // isSelectedCategory("All0");
+  let isAll = true;
+
   const dishesList = document.getElementById("dishesList");
   dishesList.innerHTML = "";
   allMeals.forEach((cate) => {
-    const secCategory = addCategoryList(cate.dishes);
-    dishesList.appendChild(secCategory);
+    addCategoryList(cate.dishes, cate.category, isAll);
+    // dishesList.appendChild(secCategory);
   });
+  toggleImgAll(isAll);
+
 }
 
-function activeAllSelected() {
+function toggleImgAll(isAll) {
   const allImg = document.getElementById("All0");
-  if (allImg) {
+  if (allImg && isAll) {
     allImg.classList.add("onSelected");
+  }else{
+    allImg.classList.remove("onSelected");
   }
 }
+
 // #########################################################
 // #########################################################
 // #########################################################
 // #########################################################
+
+function switchCategories(category, imgID) {
+  if (isAllCategorySelected(imgID)) {
+    createAllCategories();
+    return;
+  }
+
+  if (isSelectedCategory(imgID)) {
+    addSelectedCategoryList(category);
+  }
+}
 
 function isSelectedCategory(imgID) {
   const imgCategory = document.getElementById(imgID);
@@ -235,22 +255,7 @@ function isSelectedCategory(imgID) {
   }
 }
 
-function switchCategories(category, imgID) {
-  if (isAllCategory(imgID)) {
-    createAllCategories();
-    return;
-  }
-
-  const selectedCategory = allMeals.find((meal) => meal.category === category);
-
-  if (selectedCategory) {
-    if (isSelectedCategory(imgID)) {
-      addCategoryList(selectedCategory.dishes, selectedCategory.category);
-    }
-  }
-}
-
-function isAllCategory(imgID) {
+function isAllCategorySelected(imgID) {
   if (imgID == "All0") {
     document
       .querySelectorAll(".imgCategory")
@@ -258,34 +263,48 @@ function isAllCategory(imgID) {
     return true;
   }
 }
+
 function removeCategory(imgID) {
   let category = imgID.slice(0, -1);
-  // console.log(category);
-
   const targetCategory = document.getElementById(category);
   if (targetCategory) {
     targetCategory.remove();
-    console.log("removed category :", category);
-    // targetCategory.innerHTML="";
+    if (isDishesListEmpty() && issecSelectedCateEmpty()) {
+      createAllCategories();
+    }
   }
-  // parentNode.removeChild(targetCategory);
 }
 
-let count = 1;
-function addCategoryList(arrDishes, secName) {
-  const dishesList = document.getElementById("dishesList");
+function addSelectedCategoryList(category) {
+  const selectedCategory = allMeals.find((meal) => meal.category === category);
 
+  if (selectedCategory) {
+    let isAll = false;
+    addCategoryList(selectedCategory.dishes, selectedCategory.category, isAll);
+    toggleImgAll(isAll);
+  }
+}
+
+function addCategoryList(arrDishes, secName, isAll) {
   const secCategory = document.createElement("section");
-  // const secName = arrDishes.category;
-
   secCategory.id = secName;
-
   arrDishes.forEach((dish) => {
     const frmDish = addFormDish(dish);
     secCategory.appendChild(frmDish);
   });
-  dishesList.appendChild(secCategory);
-  return secCategory;
+  setInSection(secCategory, isAll);
+}
+
+function setInSection(secCategory, isAll) {
+  const dishesList = document.getElementById("dishesList");
+  const secSelectedCate = document.getElementById("secSelectedCate");
+  if (isAll) {
+    dishesList.appendChild(secCategory);
+    secSelectedCate.innerHTML = "";
+  } else {
+    secSelectedCate.appendChild(secCategory);
+    dishesList.innerHTML = "";
+  }
 }
 
 function addFormDish(objDish) {
@@ -324,13 +343,13 @@ function createImgDiv(imgSrc, price) {
   img.src = imgSrc;
   img.alt = "";
 
-  const btnAddDish = createAddDish(price);
+  const btnAddDish = createBtnAddDish(price);
   imgDiv.append(img, btnAddDish);
 
   return imgDiv;
 }
 
-function createAddDish(price) {
+function createBtnAddDish(price) {
   const button = document.createElement("button");
   button.className = "btnAddMeale";
   button.type = "submit";
@@ -340,13 +359,6 @@ function createAddDish(price) {
   return button;
 }
 
-function PlusOneFun() {
-  return;
-}
-function MinusOneFun() {
-  return;
-}
-
 function createFooterMeals() {
   const footer = document.createElement("footer");
   footer.id = "footerMeals";
@@ -354,9 +366,19 @@ function createFooterMeals() {
   return footer;
 }
 
-function create() {
-  return;
+function isDishesListEmpty() {
+  const dishesList = document.getElementById("dishesList");
+  if (dishesList.innerHTML === "") {
+    return true;
+  }
 }
+function issecSelectedCateEmpty() {
+  const secSelectedCate = document.getElementById("secSelectedCate");
+  if (secSelectedCate.innerHTML === "") {
+    return true;
+  }
+}
+
 function create() {
   return;
 }
