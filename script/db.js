@@ -4,7 +4,7 @@ const links = [
   { href: "#", text: "Impressum" },
   { href: "#", text: "Datenschutzerklärung" },
 ];
-
+// 
 const categories = [
   {
     src: "./assets/img/kategore/alle.webp",

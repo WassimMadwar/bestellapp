@@ -11,9 +11,11 @@ function loadContent() {
   const header = createHeader();
   const main = createMain();
   body.append(header, main);
+  createAllCategories();
+
   // body.appendChild(header);
   // body.appendChild(main);
-  createAllCategories();
+  // createAllCategories();
 }
 
 // #########################################################
@@ -98,10 +100,8 @@ function createSecMeals() {
   secMeals.className = "secMeals";
   const headerMeals = createHeaderSecMeals();
   const mainMeals = createMainMeals();
-  // const footerMeals = createFooterMeals();
 
   secMeals.append(headerMeals, mainMeals);
-  // secMeal.appendChild(headerMeals);
   return secMeals;
 }
 
@@ -118,8 +118,6 @@ function createHeaderSecMeals() {
 
   return header;
 }
-// +***************************************************************************
-// leater use this function in formDesh ***************************************
 function setImgMain(imgSrc, imgClass) {
   const div = document.createElement("div");
   const img = document.createElement("img");
@@ -132,8 +130,6 @@ function setImgMain(imgSrc, imgClass) {
   return div;
 }
 
-// +***************************************************************************
-
 function createMainMeals() {
   const mainMeals = document.createElement("main");
   mainMeals.id = "mainMeals";
@@ -144,7 +140,7 @@ function createMainMeals() {
   dishesList.id = "dishesList";
 
   mainMeals.append(secCategories, dishesList);
-
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   return mainMeals;
 }
 
@@ -181,7 +177,6 @@ function getCategories() {
   categories.forEach(({ src, text, category }, i) => {
     const div = document.createElement("div");
     div.className = "Category";
-
     const img = setCategorySettings(src, text, category, i);
 
     const h4 = document.createElement("h4");
@@ -198,79 +193,158 @@ function setCategorySettings(src, text, category, i) {
   img.className = "imgCategory";
   const imgID = category + i;
   img.id = imgID;
-  // Hier i will sent the  category to the onClick function ,they will be list of Meals category
-  img.onclick = () => isSelectedCategory(imgID, category);
+  img.onclick = () => switchCategories(category, imgID);
+  console.log(imgID);
+
   img.src = src;
   img.alt = "";
   img.title = `${text} Liste anzeigen`;
   return img;
 }
 
-function isSelectedCategory(imgID, category) {
-  const imgCategory = document.getElementById(imgID);
-  if (imgCategory.classList.contains("onSelected")) {
-    imgCategory.classList.remove("onSelected");
-  } else {
-    imgCategory.classList.add("onSelected");
-  }
-}
 function createAllCategories() {
+  activeAllSelected();
   const dishesList = document.getElementById("dishesList");
+  dishesList.innerHTML = "";
   allMeals.forEach((cate) => {
     const secCategory = addCategoryList(cate.dishes);
-    const Id = cate.category;
-    secCategory.id = `sec${Id}`;
-    // dishesList.appendChild(secCategory);
-    // console.log(secCategory.id );
+    dishesList.appendChild(secCategory);
   });
 }
 
-function addCategoryList(arrDishes) {
+function activeAllSelected() {
+  const allImg = document.getElementById("All0");
+  if (allImg) {
+    allImg.classList.add("onSelected");
+  }
+}
+// #########################################################
+// #########################################################
+// #########################################################
+// #########################################################
+
+function isSelectedCategory(imgID) {
+  const imgCategory = document.getElementById(imgID);
+
+  if (imgCategory.classList.contains("onSelected")) {
+    imgCategory.classList.remove("onSelected");
+    removeCategory(imgID);
+  } else {
+    imgCategory.classList.add("onSelected");
+    return true;
+  }
+}
+
+function switchCategories(category, imgID) {
+  if (isAllCategory(imgID)) {
+    createAllCategories();
+    return;
+  }
+
+  const selectedCategory = allMeals.find((meal) => meal.category === category);
+
+  if (selectedCategory) {
+    if (isSelectedCategory(imgID)) {
+      addCategoryList(selectedCategory.dishes, selectedCategory.category);
+    }
+  }
+}
+
+function isAllCategory(imgID) {
+  if (imgID == "All0") {
+    document
+      .querySelectorAll(".imgCategory")
+      .forEach((img) => img.classList.remove("onSelected"));
+    return true;
+  }
+}
+function removeCategory(imgID) {
+  let category = imgID.slice(0, -1);
+  // console.log(category);
+
+  const targetCategory = document.getElementById(category);
+  if (targetCategory) {
+    targetCategory.remove();
+    console.log("removed category :", category);
+    // targetCategory.innerHTML="";
+  }
+  // parentNode.removeChild(targetCategory);
+}
+
+let count = 1;
+function addCategoryList(arrDishes, secName) {
+  const dishesList = document.getElementById("dishesList");
+
   const secCategory = document.createElement("section");
-  arrDishes.forEach((dish)=>{
+  // const secName = arrDishes.category;
+
+  secCategory.id = secName;
+
+  arrDishes.forEach((dish) => {
     const frmDish = addFormDish(dish);
-    frmDish.id=`frmDish${dish.Id}`;
-    console.log(frmDish.id);
-    
+    secCategory.appendChild(frmDish);
   });
+  dishesList.appendChild(secCategory);
   return secCategory;
 }
 
 function addFormDish(objDish) {
-  // const section = document.getElementById("dishesList"); worng
   const form = document.createElement("form");
   form.className = "formDish";
+  form.id = `frmDish${objDish.Id}`;
 
+  const infoDiv = createInfoDiv(objDish.name, objDish.info, objDish.preis);
+
+  const imgDiv = createImgDiv(objDish.imgSrc, objDish.preis);
+
+  form.append(infoDiv, imgDiv);
+  return form;
+}
+
+function createInfoDiv(name, info, preis) {
   const infoDiv = document.createElement("div");
   infoDiv.className = "dataDish";
 
   const h3 = document.createElement("h3");
-  h3.textContent = "dish name";
+  h3.textContent = name;
   const p = document.createElement("p");
-  p.textContent = "kurz beschreibung";
+  p.textContent = `Zutaten :  ${info}`;
   const price = document.createElement("span");
   price.className = "priceDish";
-  price.textContent = "12334€";
+  price.textContent = `${preis}€`;
 
   infoDiv.append(h3, p, price);
-
+  return infoDiv;
+}
+function createImgDiv(imgSrc, price) {
   const imgDiv = document.createElement("div");
+
   const img = document.createElement("img");
   img.className = "imgDish";
-  img.src = "./assets/img/rucolasalat.webp";
+  img.src = imgSrc;
   img.alt = "";
 
+  const btnAddDish = createAddDish(price);
+  imgDiv.append(img, btnAddDish);
+
+  return imgDiv;
+}
+
+function createAddDish(price) {
   const button = document.createElement("button");
   button.className = "btnAddMeale";
   button.type = "submit";
   button.textContent = "+";
+  // button.onclick=PlusOneFun(price);
 
-  imgDiv.append(img, button);
-  form.append(infoDiv, imgDiv);
-  return form;
+  return button;
 }
-function removeCategory(params) {
-  // fun remve category list from dishesList
+
+function PlusOneFun() {
+  return;
+}
+function MinusOneFun() {
+  return;
 }
 
 function createFooterMeals() {
