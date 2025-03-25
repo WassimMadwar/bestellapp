@@ -4,7 +4,7 @@ const links = [
   { href: "#", text: "Impressum" },
   { href: "#", text: "Datenschutzerklärung" },
 ];
-// 
+// i should leater intgretion object categories in allMeals !!!!
 const categories = [
   {
     src: "./assets/img/kategore/alle.webp",
