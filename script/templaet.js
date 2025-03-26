@@ -89,8 +89,8 @@ function createMain() {
   main.id = "main";
 
   const secMeals = createSecMeals();
-  // const secBasket= createSecBasket();
-  main.appendChild(secMeals);
+  const secBasket= createSectionBasket();
+  main.appendChild(secMeals,secBasket);
   return main;
 }
 
@@ -312,7 +312,7 @@ function addFormDish(objDish) {
 
   const infoDiv = createInfoDiv(objDish.name, objDish.info, objDish.preis);
 
-  const imgDiv = createImgDiv(objDish.imgSrc, objDish.preis, objDish.name);
+  const imgDiv = createImgDiv(objDish.imgSrc, objDish.preis, objDish.name,objDish.Id);
 
   form.append(infoDiv, imgDiv);
   return form;
@@ -334,7 +334,7 @@ function createInfoDiv(name, info, preis) {
   return infoDiv;
 }
 
-function createImgDiv(imgSrc, price, name) {
+function createImgDiv(imgSrc, price, name,Id) {
   const imgDiv = document.createElement("div");
 
   const img = document.createElement("img");
@@ -342,18 +342,18 @@ function createImgDiv(imgSrc, price, name) {
   img.src = imgSrc;
   img.alt = "";
 
-  const btnAddDish = createBtnAddDish(price, name);
+  const btnAddDish = createBtnAddDish(price, name,Id);
   imgDiv.append(img, btnAddDish);
 
   return imgDiv;
 }
 
-function createBtnAddDish(price, name) {
+function createBtnAddDish(price, name,Id) {
   const button = document.createElement("button");
   button.className = "btnAddMeale";
   button.type = "button";
   button.textContent = "+";
-  button.onclick =()=> toBasket(price, name);
+  button.onclick =()=> toBasket(price, name,Id);
   // console.log(price,name);
 
   return button;
