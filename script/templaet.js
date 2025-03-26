@@ -3,7 +3,6 @@ function toggleMenu() {
   const menu = document.getElementById("menu");
   menu.classList.toggle("menuClosed");
 }
-let count = 1;
 
 window.onload = loadContent;
 
@@ -205,24 +204,21 @@ function setCategorySettings(src, text, category, i) {
 
 function createAllCategories() {
   const allImg = document.getElementById("All0");
-  // isSelectedCategory("All0");
   let isAll = true;
 
   const dishesList = document.getElementById("dishesList");
   dishesList.innerHTML = "";
   allMeals.forEach((cate) => {
-    addCategoryList(cate.dishes, cate.category, isAll);
-    // dishesList.appendChild(secCategory);
+    addOneCategoryList(cate.dishes, cate.category, isAll);
   });
   toggleImgAll(isAll);
-
 }
 
 function toggleImgAll(isAll) {
   const allImg = document.getElementById("All0");
   if (allImg && isAll) {
     allImg.classList.add("onSelected");
-  }else{
+  } else {
     allImg.classList.remove("onSelected");
   }
 }
@@ -233,17 +229,15 @@ function toggleImgAll(isAll) {
 // #########################################################
 
 function switchCategories(category, imgID) {
-  if (isAllCategorySelected(imgID)) {
+  if (isImgAllCategorySelected(imgID)) {
     createAllCategories();
     return;
-  }
-
-  if (isSelectedCategory(imgID)) {
+  } else if (toggleImgCategory(imgID)) {
     addSelectedCategoryList(category);
   }
 }
 
-function isSelectedCategory(imgID) {
+function toggleImgCategory(imgID) {
   const imgCategory = document.getElementById(imgID);
 
   if (imgCategory.classList.contains("onSelected")) {
@@ -255,7 +249,7 @@ function isSelectedCategory(imgID) {
   }
 }
 
-function isAllCategorySelected(imgID) {
+function isImgAllCategorySelected(imgID) {
   if (imgID == "All0") {
     document
       .querySelectorAll(".imgCategory")
@@ -280,12 +274,16 @@ function addSelectedCategoryList(category) {
 
   if (selectedCategory) {
     let isAll = false;
-    addCategoryList(selectedCategory.dishes, selectedCategory.category, isAll);
+    addOneCategoryList(
+      selectedCategory.dishes,
+      selectedCategory.category,
+      isAll
+    );
     toggleImgAll(isAll);
   }
 }
 
-function addCategoryList(arrDishes, secName, isAll) {
+function addOneCategoryList(arrDishes, secName, isAll) {
   const secCategory = document.createElement("section");
   secCategory.id = secName;
   arrDishes.forEach((dish) => {
@@ -314,7 +312,7 @@ function addFormDish(objDish) {
 
   const infoDiv = createInfoDiv(objDish.name, objDish.info, objDish.preis);
 
-  const imgDiv = createImgDiv(objDish.imgSrc, objDish.preis);
+  const imgDiv = createImgDiv(objDish.imgSrc, objDish.preis, objDish.name);
 
   form.append(infoDiv, imgDiv);
   return form;
@@ -335,7 +333,8 @@ function createInfoDiv(name, info, preis) {
   infoDiv.append(h3, p, price);
   return infoDiv;
 }
-function createImgDiv(imgSrc, price) {
+
+function createImgDiv(imgSrc, price, name) {
   const imgDiv = document.createElement("div");
 
   const img = document.createElement("img");
@@ -343,18 +342,19 @@ function createImgDiv(imgSrc, price) {
   img.src = imgSrc;
   img.alt = "";
 
-  const btnAddDish = createBtnAddDish(price);
+  const btnAddDish = createBtnAddDish(price, name);
   imgDiv.append(img, btnAddDish);
 
   return imgDiv;
 }
 
-function createBtnAddDish(price) {
+function createBtnAddDish(price, name) {
   const button = document.createElement("button");
   button.className = "btnAddMeale";
-  button.type = "submit";
+  button.type = "button";
   button.textContent = "+";
-  // button.onclick=PlusOneFun(price);
+  button.onclick =()=> toBasket(price, name);
+  // console.log(price,name);
 
   return button;
 }
