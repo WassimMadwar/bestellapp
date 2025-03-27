@@ -2,28 +2,36 @@ let mod = "new";
 let update = "increase";
 
 // if it dosnt work  should use else !!!
-function toBasket(price, name, Id) {
+function toBasket(objOrder) {
+  saveObjOrderInDB(objOrder);
   if (!isBasketExists()) {
     createSectionBasket();
+    console.log('section createt');
+    
   }
-  addArticle(price, name, Id);
+  // addArticle(objOrder);
   // else {
   //   addArticle(price, name, Id);
   // }
+  console.log(arrOrders);
 }
-function addArticle(price, name, Id) {
-  if (!isArticleExists(Id)) {
-    createNewArticle(price, name, Id);
+
+function isBasketExists() {
+  const basket = document.getElementById("secBasket");
+  if (basket) {
+    return true;
+  }
+  return false;
+}
+
+function addArticle(objOrder) {
+  if (!isArticleExists(objOrder.artID)) {
+    // createNewArticle(price, name, Id);
   }
   increaseOne(price, name, Id);
   // else {
   //   increaseOne(price, name, Id);
   // }
-}
-
-function isBasketExists() {
-  //  IF get ele secBasket
-  // return true;
 }
 
 function isArticleExists() {
@@ -32,6 +40,7 @@ function isArticleExists() {
 }
 
 function createSectionBasket() {
+  const main = document.getElementById("main");
   const secBasket = document.createElement("section");
   secBasket.id = "secBasket";
 
@@ -39,7 +48,7 @@ function createSectionBasket() {
   const artKase = createArtKasse();
 
   secBasket.append(artBasket, artKase);
-
+  // main.appendChild(secBasket);
   return secBasket;
 }
 
@@ -107,8 +116,8 @@ function createInfoOrderDiv() {
   infoDiv.className = "infoArtOrder";
   const ctrAmountDiv = createAmountControl();
   const totalDiv = createTotalOrderDiv();
-  const deleteDiv =createBtnDelete();
-  infoDiv.append(ctrAmountDiv, totalDiv,deleteDiv);
+  const deleteDiv = createBtnDelete();
+  infoDiv.append(ctrAmountDiv, totalDiv, deleteDiv);
   return infoDiv;
 }
 function createAmountControl() {
@@ -251,9 +260,11 @@ function createLblTotalSpan() {
 }
 
 function createTotalSpan(FinalTotal) {
+  // change remove total.id"total"
+  // add id to txt = totalInvoice
   const total = document.createElement("span");
-  total.id = "total";
   const txt = document.createElement("b");
+  txt.id = "totalInvoice";
   txt.textContent = "from varible";
   total.appendChild(txt);
   return total;
@@ -262,16 +273,16 @@ function createTotalSpan(FinalTotal) {
 function createArtKasse() {
   const artKase = document.createElement("section");
   artKase.id = "artKase";
-  const btn =createBuyBtn();
+  const btn = createBuyBtn();
   artKase.appendChild(btn);
   return artKase;
 }
 function createBuyBtn() {
-  const btn =document.createElement('button');
-  btn.className='CT';
-  btn.id="btnBuy";
-  btn.type="submit";
-  btn.innerHTML=`Zur Kasse ${iconSvg.iconKasse}`;
+  const btn = document.createElement("button");
+  btn.className = "CT";
+  btn.id = "btnBuy";
+  btn.type = "submit";
+  btn.innerHTML = `Zur Kasse ${iconSvg.iconKasse}`;
   return btn;
 }
 

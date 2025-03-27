@@ -163,3 +163,54 @@ const allMeals = [
     ],
   },
 ];
+
+arrOrders = [];
+
+function findObjOrderByID(artID) {
+  const foundArticle = arrOrders.find((arrOrders) => arrOrders.artID === artID);
+  if (foundArticle) {
+    return foundArticle;
+  }
+  return false;
+}
+// const currentArticle = findObjOrderByID(artID);
+function addNewObjOrderInDB(objOrder) {
+  arrOrders.push(objOrder);
+}
+function saveObjOrderInDB(objOrder) {
+  if (isObjOrderInDBExists(objOrder.artID)) {
+    // updateObjOrderInDB(objOrder);
+    updateArticleOrder(objOrder);
+
+    return;
+  }
+  addNewObjOrderInDB(objOrder);
+
+}
+
+function isObjOrderInDBExists(artID) {
+  const foundArticle = findObjOrderByID(artID);
+  if (foundArticle) {
+    // console.log(foundArticle);
+    return true;
+  }
+  return false;
+}
+function updateArticleOrder(objOrder) {
+  updateObjOrderInDB(objOrder);
+  updateTotalOrdersSpan(objOrder);
+}
+function updateObjOrderInDB(objOrder) {
+  objOrder.artAmount += 1;
+  objOrder.total += objOrder.artPrice;
+}
+
+function updateArtTotalSpan(objOrder) {
+  updateTotalOrdersSpan(objOrder);
+}
+
+function updateTotalOrdersSpan(objOrder) {
+  updateTotalInvoice(objOrder);
+}
+function updateTotalInvoice(objOrder) {}
+function deleteObjOrderFromDB(objOrder) {}

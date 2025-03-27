@@ -87,7 +87,9 @@ function createNavHeader() {
 // #########################################################
 // #########################################################
 // #########################################################
-
+// zu deactiver basket 
+// 1 - einkommintieren   const secBasket= createSectionBasket();und  main.append(secMeals,secBasket);
+// 2 - auskommintierenmain.append(secMeals);
 function createMain() {
   const main = document.createElement("main");
   main.id = "main";
@@ -95,6 +97,7 @@ function createMain() {
   const secMeals = createSecMeals();
   const secBasket= createSectionBasket();
   main.append(secMeals,secBasket);
+  // main.append(secMeals);
   return main;
 }
 
@@ -315,7 +318,12 @@ function addFormDish(objDish) {
 
   const infoDiv = createInfoDiv(objDish.name, objDish.info, objDish.preis);
 
-  const imgDiv = createImgDiv(objDish.imgSrc, objDish.preis, objDish.name,objDish.Id);
+  const imgDiv = createImgDiv(
+    objDish.imgSrc,
+    objDish.preis,
+    objDish.name,
+    objDish.Id
+  );
 
   form.append(infoDiv, imgDiv);
   return form;
@@ -337,7 +345,7 @@ function createInfoDiv(name, info, preis) {
   return infoDiv;
 }
 
-function createImgDiv(imgSrc, price, name,Id) {
+function createImgDiv(imgSrc, price, name, Id) {
   const imgDiv = document.createElement("div");
 
   const img = document.createElement("img");
@@ -345,19 +353,25 @@ function createImgDiv(imgSrc, price, name,Id) {
   img.src = imgSrc;
   img.alt = "";
 
-  const btnAddDish = createBtnAddDish(price, name,Id);
+  const btnAddDish = createBtnAddDish(price, name, Id);
   imgDiv.append(img, btnAddDish);
 
   return imgDiv;
 }
 
-function createBtnAddDish(price, name,Id) {
+function createBtnAddDish(price, name, Id) {
   const button = document.createElement("button");
   button.className = "btnAddMeale";
   button.type = "button";
   button.textContent = "+";
-  button.onclick =()=> toBasket(price, name,Id);
-  // console.log(price,name);
+  const objOrder = {
+    artID: Id,
+    artName: name,
+    artPrice: price,
+    artAmount: 1,
+    total:price,
+  };
+  button.onclick = () => toBasket(objOrder);
 
   return button;
 }

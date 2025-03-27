@@ -78,3 +78,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.appendChild(checkoutSection);
 });
+
+
+function createNewNote() {
+    const title = document.getElementById("titNote");
+    const txtNote = document.getElementById("txtNote");
+    if ((title.value == "") & (txtNote.value == "")) {
+      return;
+    }else if (!title.checkValidity()) {
+      title.reportValidity(); 
+      return;
+    } else {
+      const objNewNote = {
+        title: title.value.trim(),
+        text: txtNote.value.trim(),
+        Id: counter,
+      };
+      addNoteData(objNewNote);
+      updateCounter();
+    }
+  }
+
+  function addNoteDataToArr(objNote) {
+    const objToArr = objNote;
+    arrNotes.push(objToArr);
+    saveNoteDataToLS();
+  }
