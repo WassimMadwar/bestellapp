@@ -3,7 +3,11 @@ function toggleMenu() {
   const menu = document.getElementById("menu");
   menu.classList.toggle("menuClosed");
 }
-
+function separtorLine() {
+  const separtor = document.createElement("div");
+  separtor.className = "separtor";
+  return separtor;
+}
 window.onload = loadContent;
 
 function loadContent() {
@@ -90,7 +94,8 @@ function createMain() {
 
   const secMeals = createSecMeals();
   const secBasket= createSectionBasket();
-  main.appendChild(secMeals,secBasket);
+  main.append(secMeals,secBasket);
+  // main.append(secMeals);
   return main;
 }
 
@@ -151,8 +156,7 @@ function createSectionCategories() {
 
   const frmCategories = createFormCategories();
 
-  const separtor = document.createElement("div");
-  separtor.className = "separtor";
+  const separtor = separtorLine();
 
   section.append(frmCategories, separtor);
 
