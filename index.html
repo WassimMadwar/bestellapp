@@ -124,13 +124,14 @@
             </h2>
           </header>
           <main id="mainBasket">
-            <section>
+            <!-- createSectionAllOrder() -->
+            <section id="allOrders">
               <article class="artOrder">
                 <div class="titDish"><h3>article name</h3></div>
                 <div class="infoArtOrder">
                   <div class="ctrAmount">
                     <button type="submit" onclick="" class="ctr CT">-</button>
-                    <span class="amount">1x</span>
+                    <span class="amount">1</span>
                     <button type="submit" onclick="" class="ctr CT">+</button>
                   </div>
                   <div>
@@ -154,6 +155,7 @@
                 </div>
               </article>
             </section>
+            <!-- Section Invoice start -->
             <section>
               <article id="artInvoice">
                 <div class="invoice">
@@ -168,15 +170,13 @@
             </section>
           </main>
           <footer id="footerBasket">
-            <section id="secFooterBasket">
-              <article id="artTotal">
-                <div class="separtor"></div>
-                <div class="invoice" id="totalInvoice">
-                  <span id="lblTotal"><b>Gesamt</b></span>
-                  <span id="total"><b>120,8</b></span>
-                </div>
-              </article>
-            </section>
+            <article id="artTotal">
+              <div class="separtor"></div>
+              <div class="invoice" id="totalInvoice">
+                <span id="lblTotal"><b>Gesamt</b></span>
+                <span id="total"><b>120,8</b></span>
+              </div>
+            </article>
           </footer>
         </section>
         <section id="artKase">
