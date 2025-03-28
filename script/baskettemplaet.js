@@ -25,16 +25,6 @@ function isBasketExists() {
   return false;
 }
 
-function addArticle(objOrder) {
-  if (!isArticleExists(objOrder.artID)) {
-    // createNewArticle(price, name, Id);
-  }
-  increaseOne(price, name, Id);
-  // else {
-  //   increaseOne(price, name, Id);
-  // }
-}
-
 function isArticleExistsInBasket(artAmount, artID) {
   if (findObjOrderByID(artID) && artAmount > 1) {
     return true;
@@ -61,7 +51,7 @@ function createSectionBasket() {
 function createArtBasket() {
   const artBasket = document.createElement("section");
   artBasket.id = "artBasket";
-  const headerBasket = createHeaderBasket(); 
+  const headerBasket = createHeaderBasket();
   const mainBasket = createMainBasket();
   const footerBasket = createFooterBasket();
 
@@ -293,7 +283,6 @@ function createBuyBtn() {
   return btn;
 }
 
-
 function increaseOne(price, name, Id) {
   let update = "increase";
   // updateAmountArticle(price, Id, update);
@@ -313,4 +302,3 @@ function updateTotalArticle(objOrder) {
   const newTotal = document.getElementById("total" + objOrder.artID);
   newTotal.textContent = `${parseFloat(objOrder.total).toFixed(2)}€`;
 }
-
