@@ -28,6 +28,7 @@ function createHeader() {
   header.id = "header";
 
   const headerContent = createHeaderContent();
+
   header.appendChild(headerContent);
   return header;
 }
@@ -206,8 +207,8 @@ function createAllCategories() {
 
   const dishesList = document.getElementById("dishesList");
   dishesList.innerHTML = "";
-  allMeals.forEach((cate) => {
-    addOneCategoryList(cate.dishes, cate.category, isAll);
+  allMeals.forEach((ele) => {
+    addOneCategoryList(ele.dishes, ele.category, isAll);
   });
   toggleImgAll(isAll);
 }
@@ -256,19 +257,8 @@ function isImgAllCategorySelected(imgID) {
   }
 }
 
-function removeCategory(imgID) {
-  let category = imgID.slice(0, -1);
-  const targetCategory = document.getElementById(category);
-  if (targetCategory) {
-    targetCategory.remove();
-    if (isDishesListEmpty() && issecSelectedCateEmpty()) {
-      createAllCategories();
-    }
-  }
-}
-
 function addSelectedCategoryList(category) {
-  const selectedCategory = allMeals.find((meal) => meal.category === category);
+  const selectedCategory = allMeals.find((Cate) => Cate.category === category);
 
   if (selectedCategory) {
     let isAll = false;
@@ -295,11 +285,11 @@ function setInSection(secCategory, isAll) {
   const dishesList = document.getElementById("dishesList");
   const secSelectedCate = document.getElementById("secSelectedCate");
   if (isAll) {
-    dishesList.appendChild(secCategory);
     secSelectedCate.innerHTML = "";
+    dishesList.appendChild(secCategory);
   } else {
-    secSelectedCate.appendChild(secCategory);
     dishesList.innerHTML = "";
+    secSelectedCate.appendChild(secCategory);
   }
 }
 
@@ -310,13 +300,7 @@ function addFormDish(objDish) {
 
   const infoDiv = createInfoDiv(objDish.name, objDish.info, objDish.preis);
 
-  const imgDiv = createImgDiv(
-    objDish.imgSrc,
-    objDish.preis,
-    objDish.name,
-    objDish.Id
-  );
-
+  const imgDiv = createImgDiv(objDish);
   form.append(infoDiv, imgDiv);
   return form;
 }
@@ -337,42 +321,41 @@ function createInfoDiv(name, info, preis) {
   return infoDiv;
 }
 
-function createImgDiv(imgSrc, price, name, Id) {
+function createImgDiv(objDish) {
   const imgDiv = document.createElement("div");
 
   const img = document.createElement("img");
   img.className = "imgDish";
-  img.src = imgSrc;
+  img.src = objDish.imgSrc;
   img.alt = "";
 
-  const btnAddDish = createBtnAddDish(price, name, Id);
+  const btnAddDish = createBtnAddDish(objDish);
   imgDiv.append(img, btnAddDish);
 
   return imgDiv;
 }
 
-function createBtnAddDish(price, name, Id) {
+function createBtnAddDish(objDish) {
   const button = document.createElement("button");
   button.className = "btnAddMeale";
   button.type = "button";
   button.textContent = "+";
-  const objOrder = {
-    artID: Id,
-    artName: name,
-    artPrice: price,
-    artAmount: 1,
-    total: price,
-  };
-  button.onclick = () => toBasket(objOrder);
+  
+
+  button.onclick = () => toBasket(objDish);
 
   return button;
 }
 
-function createFooterMeals() {
-  const footer = document.createElement("footer");
-  footer.id = "footerMeals";
-  footer.textContent = "ctr next page";
-  return footer;
+function removeCategory(imgID) {
+  let category = imgID.slice(0, -1);
+  const targetCategory = document.getElementById(category);
+  if (targetCategory) {
+    targetCategory.remove();
+    if (isDishesListEmpty() && issecSelectedCateEmpty()) {
+      createAllCategories();
+    }
+  }
 }
 
 function isDishesListEmpty() {
@@ -387,7 +370,12 @@ function issecSelectedCateEmpty() {
     return true;
   }
 }
-
+function createFooterMeals() {
+  const footer = document.createElement("footer");
+  footer.id = "footerMeals";
+  footer.textContent = "ctr next page";
+  return footer;
+}
 function create() {
   return;
 }

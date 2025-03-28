@@ -167,27 +167,44 @@ const allMeals = [
 ];
 
 arrOrders = [];
+function setCurrentObjOrder(objDish) {
+  const _objOrder={
+    artID:objDish.Id,
+    artName:objDish.name,
+    artPrice:objDish.preis,
+    artAmount:1,
+    total:objDish.preis,
+  }
+  
+  return _objOrder;
+}
+function  getCurrentObjOrder(artID){
+  const _objOrder = findObjOrderByID(artID);
 
+  return _objOrder;
+}
 function findObjOrderByID(artID) {
   const foundArticle = arrOrders.find((arrOrders) => arrOrders.artID === artID);
   if (foundArticle) {
-    return true;
+    return foundArticle;
   }
+  
   return false;
 }
-function getCurrentObjArticle(artID) {
-  const currentArticle = findObjOrderByID(artID);
-}
-function addNewObjOrderInDB(objOrder) {
+
+function addNewObjOrderInDB(objDish) {
+ const objOrder = setCurrentObjOrder(objDish);
   arrOrders.push(objOrder);
 }
-function saveObjOrderInDB(objOrder) {
-  if (isObjOrderInDBExists(objOrder.artID)) {
+function saveObjOrderInDB(objDish) {
+  if (isObjOrderInDBExists(objDish.Id)) {
+  const objOrder = findObjOrderByID(objDish.Id);
+
     updateObjOrderInDB(objOrder);
 
     return;
   }
-  addNewObjOrderInDB(objOrder);
+  addNewObjOrderInDB(objDish);
 }
 
 function isObjOrderInDBExists(artID) {
@@ -202,7 +219,6 @@ function updateObjOrderInDB(objOrder) {
   objOrder.artAmount += 1;
   objOrder.total = parseFloat((objOrder.total + objOrder.artPrice).toFixed(2));
 }
-
 
 function deleteObjOrderFromDB(objOrder) {}
 
@@ -236,3 +252,4 @@ function updateSectionInvoice(withDelivery) {
   updateSubtotal();
   updateTotalInvoice(withDelivery);
 }
+

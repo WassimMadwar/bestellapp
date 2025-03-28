@@ -1,7 +1,7 @@
 let mod = "new";
-
-function toBasket(objOrder) {
-  saveObjOrderInDB(objOrder);
+function toBasket(objDish) {
+  saveObjOrderInDB(objDish);
+  const objOrder = getCurrentObjOrder(objDish.Id);
   if (!isBasketExists()) {
     createSectionBasket();
     createArticleOrder(objOrder);
@@ -29,8 +29,6 @@ function isArticleExistsInBasket(artAmount, artID) {
   if (findObjOrderByID(artID) && artAmount > 1) {
     return true;
   } else {
-    console.log("not");
-
     return false;
   }
 }
