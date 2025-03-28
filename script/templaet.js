@@ -16,8 +16,6 @@ function loadContent() {
   const main = createMain();
   body.append(header, main);
   createAllCategories();
-
-
 }
 
 // #########################################################
@@ -363,7 +361,7 @@ function createBtnAddDish(price, name, Id) {
     artName: name,
     artPrice: price,
     artAmount: 1,
-    total:price,
+    total: price,
   };
   button.onclick = () => toBasket(objOrder);
 
