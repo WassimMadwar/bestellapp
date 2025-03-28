@@ -17,9 +17,7 @@ function loadContent() {
   body.append(header, main);
   createAllCategories();
 
-  // body.appendChild(header);
-  // body.appendChild(main);
-  // createAllCategories();
+
 }
 
 // #########################################################
@@ -87,16 +85,12 @@ function createNavHeader() {
 // #########################################################
 // #########################################################
 // #########################################################
-// zu deactiver basket 
-// 1 - einkommintieren   const secBasket= createSectionBasket();und  main.append(secMeals,secBasket);
-// 2 - auskommintierenmain.append(secMeals);
+
 function createMain() {
   const main = document.createElement("main");
   main.id = "main";
 
   const secMeals = createSecMeals();
-  // const secBasket= createSectionBasket();
-  // main.append(secMeals,secBasket);
   main.append(secMeals);
   return main;
 }

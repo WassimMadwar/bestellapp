@@ -5,13 +5,11 @@ function toBasket(objOrder) {
   if (!isBasketExists()) {
     createSectionBasket();
     createArticleOrder(objOrder);
-    // updateSubtotal();
     return;
   }
 
   if (isArticleExistsInBasket(objOrder.artAmount, objOrder.artID)) {
     updateAmountArticle(objOrder);
-    // updateSubtotal();
     return;
   } else {
     createArticleOrder(objOrder);
@@ -63,7 +61,7 @@ function createSectionBasket() {
 function createArtBasket() {
   const artBasket = document.createElement("section");
   artBasket.id = "artBasket";
-  const headerBasket = createHeaderBasket(); //done
+  const headerBasket = createHeaderBasket(); 
   const mainBasket = createMainBasket();
   const footerBasket = createFooterBasket();
 
@@ -88,7 +86,6 @@ function createMainBasket() {
 
   const secOrders = createSectionAllOrder();
 
-  // const secInvoice = createSectionInvoice();
   mainBasket.append(secOrders);
   return mainBasket;
 }
@@ -228,7 +225,6 @@ function createDeliveryCostDiv() {
 function createTotalOrdersSpan() {
   const totalOrders = document.createElement("span");
   totalOrders.id = "totalOrders";
-  // totalOrders.textContent = 0;
 
   return totalOrders;
 }
@@ -297,7 +293,6 @@ function createBuyBtn() {
   return btn;
 }
 
-// function createNewArticle(price, name, Id) {}
 
 function increaseOne(price, name, Id) {
   let update = "increase";
@@ -319,4 +314,3 @@ function updateTotalArticle(objOrder) {
   newTotal.textContent = `${parseFloat(objOrder.total).toFixed(2)}€`;
 }
 
-function name() {}
