@@ -95,9 +95,9 @@ function createMain() {
   main.id = "main";
 
   const secMeals = createSecMeals();
-  const secBasket= createSectionBasket();
-  main.append(secMeals,secBasket);
-  // main.append(secMeals);
+  // const secBasket= createSectionBasket();
+  // main.append(secMeals,secBasket);
+  main.append(secMeals);
   return main;
 }
 

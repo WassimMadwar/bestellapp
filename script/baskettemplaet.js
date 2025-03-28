@@ -1,19 +1,22 @@
 let mod = "new";
-let update = "increase";
 
-// if it dosnt work  should use else !!!
 function toBasket(objOrder) {
   saveObjOrderInDB(objOrder);
   if (!isBasketExists()) {
     createSectionBasket();
-    console.log('section createt');
-    
+    createArticleOrder(objOrder);
+    // updateSubtotal();
+    return;
   }
-  // addArticle(objOrder);
-  // else {
-  //   addArticle(price, name, Id);
-  // }
-  console.log(arrOrders);
+
+  if (isArticleExistsInBasket(objOrder.artAmount, objOrder.artID)) {
+    updateAmountArticle(objOrder);
+    // updateSubtotal();
+    return;
+  } else {
+    createArticleOrder(objOrder);
+    updateTotalInvoice();
+  }
 }
 
 function isBasketExists() {
@@ -34,9 +37,14 @@ function addArticle(objOrder) {
   // }
 }
 
-function isArticleExists() {
-  // IF get ele
-  // return true;
+function isArticleExistsInBasket(artAmount, artID) {
+  if (findObjOrderByID(artID) && artAmount > 1) {
+    return true;
+  } else {
+    console.log("not");
+
+    return false;
+  }
 }
 
 function createSectionBasket() {
@@ -48,8 +56,8 @@ function createSectionBasket() {
   const artKase = createArtKasse();
 
   secBasket.append(artBasket, artKase);
-  // main.appendChild(secBasket);
-  return secBasket;
+  main.appendChild(secBasket);
+  // return secBasket;
 }
 
 function createArtBasket() {
@@ -80,8 +88,8 @@ function createMainBasket() {
 
   const secOrders = createSectionAllOrder();
 
-  const secInvoice = createSectionInvoice();
-  mainBasket.append(secOrders, secInvoice);
+  // const secInvoice = createSectionInvoice();
+  mainBasket.append(secOrders);
   return mainBasket;
 }
 
@@ -89,44 +97,46 @@ function createMainBasket() {
 function createSectionAllOrder() {
   const secOrders = document.createElement("section");
   secOrders.id = "allOrders";
-  const artOrder = createArticleOrder(); //createNewArticle
-  secOrders.appendChild(artOrder);
+
   return secOrders;
 }
-//createNewArticle
-function createArticleOrder() {
+function createArticleOrder(objOrder) {
+  const secOrders = document.getElementById("allOrders");
   const artOrder = document.createElement("article");
   artOrder.className = "artOrder";
-  const nameDish = createNameDiv();
-  const infoOrder = createInfoOrderDiv();
-  // artOrder.append(nameDish);
+  const nameDish = createNameDiv(objOrder.artName);
+  const infoOrder = createInfoOrderDiv(objOrder);
+
   artOrder.append(nameDish, infoOrder);
-  return artOrder;
+  secOrders.append(artOrder);
+  updateSectionInvoice(withDelivery);
+  // return artOrder;
 }
-function createNameDiv() {
+
+function createNameDiv(artName) {
   const titDish = document.createElement("div");
   titDish.className = "titDish";
   const txt = document.createElement("h3");
-  txt.textContent = "from btnAddMeale";
+  txt.textContent = artName;
   titDish.appendChild(txt);
   return titDish;
 }
-function createInfoOrderDiv() {
+function createInfoOrderDiv(objOrder) {
   const infoDiv = document.createElement("div");
   infoDiv.className = "infoArtOrder";
-  const ctrAmountDiv = createAmountControl();
-  const totalDiv = createTotalOrderDiv();
+  const ctrAmountDiv = createAmountControl(objOrder);
+  const totalDiv = createTotalOrderDiv(objOrder);
   const deleteDiv = createBtnDelete();
   infoDiv.append(ctrAmountDiv, totalDiv, deleteDiv);
   return infoDiv;
 }
-function createAmountControl() {
+function createAmountControl(objOrder) {
   const ctrAmountDiv = document.createElement("div");
   ctrAmountDiv.className = "ctrAmount";
 
   const decreaseButton = createDecreaseBtn();
 
-  const amountSpan = createAmountSpan();
+  const amountSpan = createAmountSpan(objOrder);
 
   const increaseButton = createIncreaseBtn();
 
@@ -141,10 +151,11 @@ function createDecreaseBtn() {
   decreaseButton.textContent = "-";
   return decreaseButton;
 }
-function createAmountSpan() {
+function createAmountSpan(objOrder) {
   const amountSpan = document.createElement("span");
+  amountSpan.id = objOrder.artName;
   amountSpan.className = "amount";
-  amountSpan.textContent = 1;
+  amountSpan.textContent = `${objOrder.artAmount}x`;
   return amountSpan;
 }
 function createIncreaseBtn() {
@@ -155,12 +166,13 @@ function createIncreaseBtn() {
   return increaseButton;
 }
 
-function createTotalOrderDiv() {
+function createTotalOrderDiv(objOrder) {
   const totalDiv = document.createElement("div");
 
   const totalSpan = document.createElement("span");
+  totalSpan.id = "total" + objOrder.artID;
   totalSpan.className = "totalArt";
-  totalSpan.textContent = "1234€";
+  totalSpan.textContent = `${objOrder.total}€`;
 
   totalDiv.appendChild(totalSpan);
   return totalDiv;
@@ -216,7 +228,7 @@ function createDeliveryCostDiv() {
 function createTotalOrdersSpan() {
   const totalOrders = document.createElement("span");
   totalOrders.id = "totalOrders";
-  totalOrders.textContent = "calc Articles";
+  // totalOrders.textContent = 0;
 
   return totalOrders;
 }
@@ -227,8 +239,9 @@ function createFooterBasket() {
   footerBasket.id = "footerBasket";
 
   const artTotal = createTotalArticle();
+  const secInvoice = createSectionInvoice();
 
-  footerBasket.appendChild(artTotal);
+  footerBasket.append(secInvoice, artTotal);
   return footerBasket;
 }
 function createTotalArticle() {
@@ -260,12 +273,10 @@ function createLblTotalSpan() {
 }
 
 function createTotalSpan(FinalTotal) {
-  // change remove total.id"total"
-  // add id to txt = totalInvoice
   const total = document.createElement("span");
   const txt = document.createElement("b");
   txt.id = "totalInvoice";
-  txt.textContent = "from varible";
+  txt.textContent = "";
   total.appendChild(txt);
   return total;
 }
@@ -286,25 +297,26 @@ function createBuyBtn() {
   return btn;
 }
 
-function createNewArticle(price, name, Id) {}
+// function createNewArticle(price, name, Id) {}
 
 function increaseOne(price, name, Id) {
   let update = "increase";
-  updateAmountArticle(price, Id, update);
+  // updateAmountArticle(price, Id, update);
 }
 function decreaseOne(price) {
   let update = "decrease";
-  updateAmountArticle(price, Id, update);
+  // updateAmountArticle(objOrder);
 }
 
-function updateAmountArticle(price, Id, update) {
-  updateTotalArticle(price, Id, update);
+function updateAmountArticle(objOrder) {
+  const newMaount = document.getElementById(objOrder.artName);
+  newMaount.textContent = `${objOrder.artAmount}x`;
+  updateTotalArticle(objOrder);
+  updateSectionInvoice(withDelivery);
 }
-function updateTotalArticle(price, Id, update) {
-  updateSubtotal(price, update);
+function updateTotalArticle(objOrder) {
+  const newTotal = document.getElementById("total" + objOrder.artID);
+  newTotal.textContent = `${parseFloat(objOrder.total).toFixed(2)}€`;
 }
-function updateSubtotal(price, update) {
-  updateTotalInvoice(price, update);
-}
-function updateTotalInvoice(price) {}
+
 function name() {}

@@ -1,3 +1,5 @@
+let withDelivery = false;
+
 const links = [
   { href: "./index.html", text: "Start" },
   { href: "#", text: "Kontakt" },
@@ -169,18 +171,22 @@ arrOrders = [];
 function findObjOrderByID(artID) {
   const foundArticle = arrOrders.find((arrOrders) => arrOrders.artID === artID);
   if (foundArticle) {
-    return foundArticle;
+    // return foundArticle;
+    return true;
   }
   return false;
 }
-// const currentArticle = findObjOrderByID(artID);
+function getCurrentObjArticle(artID) {
+const currentArticle = findObjOrderByID(artID);
+  
+}
 function addNewObjOrderInDB(objOrder) {
   arrOrders.push(objOrder);
 }
 function saveObjOrderInDB(objOrder) {
   if (isObjOrderInDBExists(objOrder.artID)) {
     // updateObjOrderInDB(objOrder);
-    updateArticleOrder(objOrder);
+    updateObjOrderInDB(objOrder);
 
     return;
   }
@@ -196,21 +202,49 @@ function isObjOrderInDBExists(artID) {
   }
   return false;
 }
-function updateArticleOrder(objOrder) {
-  updateObjOrderInDB(objOrder);
-  updateTotalOrdersSpan(objOrder);
-}
+
 function updateObjOrderInDB(objOrder) {
   objOrder.artAmount += 1;
-  objOrder.total += objOrder.artPrice;
+  objOrder.total = parseFloat((objOrder.total + objOrder.artPrice).toFixed(2))
 }
 
-function updateArtTotalSpan(objOrder) {
-  updateTotalOrdersSpan(objOrder);
-}
+// function updateArtTotalSpan(objOrder) {
+//   updateTotalOrdersSpan(objOrder);
+// }
 
-function updateTotalOrdersSpan(objOrder) {
-  updateTotalInvoice(objOrder);
-}
-function updateTotalInvoice(objOrder) {}
+// function updateTotalOrdersSpan(objOrder) {
+//   updateTotalInvoice(objOrder);
+// }
+// function updateTotalInvoice(objOrder) {}
 function deleteObjOrderFromDB(objOrder) {}
+
+// update
+
+
+function updateSubtotal() {
+  const totalOrders =document.getElementById('totalOrders');
+let subTotal =getTotatlAllOrders();
+ totalOrders.textContent=`${parseFloat(subTotal).toFixed(2)}€`;
+  return totalOrders;
+}
+function getTotatlAllOrders() {
+  let subTotal =0;
+ arrOrders.forEach(element => {
+  subTotal += element.total;
+ });
+ return subTotal;
+}
+function updateTotalInvoice(withDelivery) {
+  const total =document.getElementById('totalInvoice');
+  let subTotal =getTotatlAllOrders();
+if (withDelivery) {
+  subTotal +=5;
+  console.log('2');totalInvoice
+}
+total.textContent=`${parseFloat(subTotal).toFixed(2)}€`;
+}
+
+function updateSectionInvoice(withDelivery) {
+  updateSubtotal();
+  updateTotalInvoice(withDelivery);
+}
