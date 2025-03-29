@@ -1,4 +1,3 @@
-let mod = "new";
 
 function createSectionBasket() {
   const main = document.getElementById("main");
