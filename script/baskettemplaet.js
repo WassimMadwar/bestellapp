@@ -1,37 +1,4 @@
 let mod = "new";
-function toBasket(objDish) {
-  saveObjOrderInDB(objDish);
-  const objOrder = getCurrentObjOrder(objDish.Id);
-  if (!isBasketExists()) {
-    createSectionBasket();
-    createArticleOrder(objOrder);
-    return;
-  }
-
-  if (isArticleExistsInBasket(objOrder.artAmount, objOrder.artID)) {
-    updateAmountArticle(objOrder);
-    return;
-  } else {
-    createArticleOrder(objOrder);
-    updateSectionInvoice();
-  }
-}
-
-function isBasketExists() {
-  const basket = document.getElementById("secBasket");
-  if (basket) {
-    return true;
-  }
-  return false;
-}
-
-function isArticleExistsInBasket(artAmount, artID) {
-  if (findObjOrderByID(artID) && artAmount > 1) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 function createSectionBasket() {
   const main = document.getElementById("main");
