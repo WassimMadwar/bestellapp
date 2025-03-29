@@ -167,6 +167,7 @@ const allMeals = [
 ];
 
 arrOrders = [];
+
 function setCurrentObjOrder(objDish) {
   const _objOrder={
     artID:objDish.Id,
@@ -242,13 +243,13 @@ function updateTotalInvoice(withDelivery) {
   let subTotal = getTotatlAllOrders();
   if (withDelivery) {
     subTotal += 5;
-    console.log("2");
-    totalInvoice;
+    // console.log("2");
+    // totalInvoice;
   }
   total.textContent = `${parseFloat(subTotal).toFixed(2)}€`;
 }
 
-function updateSectionInvoice(withDelivery) {
+function updateSectionInvoice() {
   updateSubtotal();
   updateTotalInvoice(withDelivery);
 }

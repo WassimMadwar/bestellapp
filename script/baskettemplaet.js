@@ -13,7 +13,7 @@ function toBasket(objDish) {
     return;
   } else {
     createArticleOrder(objOrder);
-    updateTotalInvoice();
+    updateSectionInvoice();
   }
 }
 
@@ -94,8 +94,7 @@ function createArticleOrder(objOrder) {
 
   artOrder.append(nameDish, infoOrder);
   secOrders.append(artOrder);
-  updateSectionInvoice(withDelivery);
-  // return artOrder;
+  updateSectionInvoice();
 }
 
 function createNameDiv(artName) {
@@ -294,7 +293,7 @@ function updateAmountArticle(objOrder) {
   const newMaount = document.getElementById(objOrder.artName);
   newMaount.textContent = `${objOrder.artAmount}x`;
   updateTotalArticle(objOrder);
-  updateSectionInvoice(withDelivery);
+  updateSectionInvoice();
 }
 function updateTotalArticle(objOrder) {
   const newTotal = document.getElementById("total" + objOrder.artID);
