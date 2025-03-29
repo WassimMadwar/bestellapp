@@ -254,3 +254,23 @@ function updateSectionInvoice() {
   updateTotalInvoice(withDelivery);
 }
 
+
+function increaseOne(price, name, Id) {
+  let update = "increase";
+  // updateAmountArticle(price, Id, update);
+}
+function decreaseOne(price) {
+  let update = "decrease";
+  // updateAmountArticle(objOrder);
+}
+
+function updateAmountArticle(objOrder) {
+  const newMaount = document.getElementById(objOrder.artName);
+  newMaount.textContent = `${objOrder.artAmount}x`;
+  updateTotalArticle(objOrder);
+  updateSectionInvoice();
+}
+function updateTotalArticle(objOrder) {
+  const newTotal = document.getElementById("total" + objOrder.artID);
+  newTotal.textContent = `${parseFloat(objOrder.total).toFixed(2)}€`;
+}

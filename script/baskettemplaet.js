@@ -255,7 +255,7 @@ function createLblTotalSpan() {
   return lblTotal;
 }
 
-function createTotalSpan(FinalTotal) {
+function createTotalSpan() {
   const total = document.createElement("span");
   const txt = document.createElement("b");
   txt.id = "totalInvoice";
@@ -278,24 +278,4 @@ function createBuyBtn() {
   btn.type = "submit";
   btn.innerHTML = `Zur Kasse ${iconSvg.iconKasse}`;
   return btn;
-}
-
-function increaseOne(price, name, Id) {
-  let update = "increase";
-  // updateAmountArticle(price, Id, update);
-}
-function decreaseOne(price) {
-  let update = "decrease";
-  // updateAmountArticle(objOrder);
-}
-
-function updateAmountArticle(objOrder) {
-  const newMaount = document.getElementById(objOrder.artName);
-  newMaount.textContent = `${objOrder.artAmount}x`;
-  updateTotalArticle(objOrder);
-  updateSectionInvoice();
-}
-function updateTotalArticle(objOrder) {
-  const newTotal = document.getElementById("total" + objOrder.artID);
-  newTotal.textContent = `${parseFloat(objOrder.total).toFixed(2)}€`;
 }
