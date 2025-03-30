@@ -2,6 +2,7 @@ function toBasket(objDish) {
   saveObjOrderInDB(objDish);
   const objOrder = getCurrentObjOrder(objDish.Id);
   if (!isBasketExists()) {
+    toggleWidthSectionMeals();
     createSectionBasket();
     createArticleOrder(objOrder);
     return;
@@ -133,10 +134,12 @@ function updateSubtotal() {
 function updateTotalInvoice(withDelivery) {
   const total = document.getElementById("totalInvoice");
   let subTotal = getTotatlAllOrders();
-  if (withDelivery) {
-    subTotal += 5;
+  if (total) {
+    if (withDelivery) {
+      subTotal += 5;
+    }
+    total.textContent = `${parseFloat(subTotal).toFixed(2)}€`;
   }
-  total.textContent = `${parseFloat(subTotal).toFixed(2)}€`;
 }
 function getTotatlAllOrders() {
   let subTotal = 0;
@@ -194,5 +197,6 @@ function removeBasket() {
   const basket = document.getElementById("secBasket");
   if (basket) {
     basket.remove();
+    toggleWidthSectionMeals();
   }
 }

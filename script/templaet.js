@@ -290,6 +290,10 @@ function createFooterMeals() {
   footer.textContent = "ctr next page";
   return footer;
 }
-function create() {
+function toggleWidthSectionMeals() {
+  const secMeals= document.getElementById('secMeals');
+  if (secMeals) {
+    secMeals.classList.toggle('mealsUndBasket');
+  }
   return;
 }

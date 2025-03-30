@@ -1,9 +1,12 @@
 .secMeals {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 300px);
+    width: 100%;
 }
-
+.mealsUndBasket{
+    width: calc(100% - 300px);
+    
+}
 .mainImg {
     height: 234px;
     width: 100%;
