@@ -8,11 +8,11 @@ function toBasket(objDish) {
   }
 
   if (isArticleExistsInBasket(objOrder.artAmount, objOrder.artID)) {
-    updateAmountArticle(objOrder);
+    increaseAmountArticle(objOrder);
     return;
   } else {
     createArticleOrder(objOrder);
-    updateSectionInvoice();
+    // updateSectionInvoice();
   }
 }
 
@@ -31,6 +31,24 @@ function isArticleExistsInBasket(artAmount, artID) {
     return false;
   }
 }
+function saveObjOrderInDB(objDish) {
+  if (isObjOrderInDBExists(objDish.Id)) {
+    const objOrder = findObjOrderByID(objDish.Id);
+
+    updateObjOrderInDB(objOrder, opert);
+
+    return;
+  }
+  createNewObjOrderInDB(objDish);
+}
+
+function isObjOrderInDBExists(artID) {
+  const foundArticle = findObjOrderByID(artID);
+  if (foundArticle) {
+    return true;
+  }
+  return false;
+}
 
 function setCurrentObjOrder(objDish) {
   const _objOrder = {
@@ -43,11 +61,7 @@ function setCurrentObjOrder(objDish) {
 
   return _objOrder;
 }
-function getCurrentObjOrder(artID) {
-  const _objOrder = findObjOrderByID(artID);
 
-  return _objOrder;
-}
 function findObjOrderByID(artID) {
   const foundArticle = arrOrders.find((arrOrders) => arrOrders.artID === artID);
   if (foundArticle) {
@@ -57,43 +71,69 @@ function findObjOrderByID(artID) {
   return false;
 }
 
-function addNewObjOrderInDB(objDish) {
+function getCurrentObjOrder(artID) {
+  const _objOrder = findObjOrderByID(artID);
+
+  return _objOrder;
+}
+
+function createNewObjOrderInDB(objDish) {
   const objOrder = setCurrentObjOrder(objDish);
+  addObjOrderInDB(objOrder);
+}
+
+function addObjOrderInDB(objOrder) {
   arrOrders.push(objOrder);
 }
-function saveObjOrderInDB(objDish) {
-  if (isObjOrderInDBExists(objDish.Id)) {
-    const objOrder = findObjOrderByID(objDish.Id);
 
-    updateObjOrderInDB(objOrder);
+function updateObjOrderInDB(objOrder, opert) {
+  switch (opert) {
+    case "minus":
+      console.log("okey minus one");
 
-    return;
+      break;
+    default:
+      increaseObjOrderInDB(objOrder);
+      break;
   }
-  addNewObjOrderInDB(objDish);
+
+  return true;
 }
 
-function isObjOrderInDBExists(artID) {
-  const foundArticle = findObjOrderByID(artID);
-  if (foundArticle) {
-    return true;
-  }
-  return false;
-}
-
-function updateObjOrderInDB(objOrder) {
+function increaseObjOrderInDB(objOrder) {
   objOrder.artAmount += 1;
   objOrder.total = parseFloat((objOrder.total + objOrder.artPrice).toFixed(2));
+  // return true;
 }
 
-function deleteObjOrderFromDB(objOrder) {}
+function decreaseObjOrderInDB(objOrder) {}
+function deleteObjOrderFromDB(artID) {
+  const targetIndex = arrOrders.findIndex((obj) => obj.artID === artID);
+  if (targetIndex !== -1) {
+    arrOrders.splice(targetIndex, 1);
+  }
+}
 
 // update
+function updateSectionInvoice() {
+  updateSubtotal();
+  updateTotalInvoice(withDelivery);
+}
 
 function updateSubtotal() {
   const totalOrders = document.getElementById("totalOrders");
   let subTotal = getTotatlAllOrders();
   totalOrders.textContent = `${parseFloat(subTotal).toFixed(2)}€`;
   return totalOrders;
+}
+
+function updateTotalInvoice(withDelivery) {
+  const total = document.getElementById("totalInvoice");
+  let subTotal = getTotatlAllOrders();
+  if (withDelivery) {
+    subTotal += 5;
+  }
+  total.textContent = `${parseFloat(subTotal).toFixed(2)}€`;
 }
 function getTotatlAllOrders() {
   let subTotal = 0;
@@ -102,38 +142,37 @@ function getTotatlAllOrders() {
   });
   return subTotal;
 }
-function updateTotalInvoice(withDelivery) {
-  const total = document.getElementById("totalInvoice");
-  let subTotal = getTotatlAllOrders();
-  if (withDelivery) {
-    subTotal += 5;
-    // console.log("2");
-    // totalInvoice;
-  }
-  total.textContent = `${parseFloat(subTotal).toFixed(2)}€`;
-}
 
-function updateSectionInvoice() {
-  updateSubtotal();
-  updateTotalInvoice(withDelivery);
-}
-
-function updateAmountArticle(objOrder) {
+function increaseAmountArticle(objOrder) {
   const newMaount = document.getElementById(objOrder.artName);
   newMaount.textContent = `${objOrder.artAmount}x`;
   updateTotalArticle(objOrder);
-  updateSectionInvoice();
 }
 function updateTotalArticle(objOrder) {
   const newTotal = document.getElementById("total" + objOrder.artID);
   newTotal.textContent = `${parseFloat(objOrder.total).toFixed(2)}€`;
+  updateSectionInvoice();
 }
 
-function increaseOne(price, name, Id) {
-  let update = "increase";
-  // updateAmountArticle(price, Id, update);
+function increaseOne(objOrder) {
+  updateObjOrderInDB(objOrder, opert);
+  increaseAmountArticle(objOrder);
 }
-function decreaseOne(price) {
-  let update = "decrease";
-  // updateAmountArticle(objOrder);
+function decreaseOne(objOrder) {
+  const opert = "minus";
+  updateObjOrderInDB(objOrder, opert);
+}
+
+function removeArticleOrder(artID) {
+  console.log("=============================================");
+  deleteObjOrderFromDB(artID);
+  deleteArticleFromBasket(artID);
+  updateSectionInvoice();
+}
+
+function deleteArticleFromBasket(artID) {
+  const art = document.getElementById(`article${artID}`);
+  if (art) {
+    art.remove();
+  }
 }

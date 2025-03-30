@@ -1,4 +1,5 @@
 let withDelivery = false;
+const opert = "plus";
 
 const links = [
   { href: "./index.html", text: "Start" },
