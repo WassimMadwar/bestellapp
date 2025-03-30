@@ -5,6 +5,7 @@ function toBasket(objDish) {
     toggleWidthSectionMeals();
     createSectionBasket();
     createArticleOrder(objOrder);
+
     return;
   }
 
@@ -131,16 +132,34 @@ function updateSubtotal() {
   return totalOrders;
 }
 
+
+function removeDeliveryCost(status) {
+  const delivery = document.getElementById('delivery');
+  delivery.remove();
+
+  createDeliveryCostDiv();
+}
+function addDeliveryCost(status) {
+  status=true;
+  if (status) {
+    
+    createDeliveryCostDiv();
+  }
+}
+
 function updateTotalInvoice(withDelivery) {
   const total = document.getElementById("totalInvoice");
   let subTotal = getTotatlAllOrders();
   if (total) {
     if (withDelivery) {
       subTotal += 5;
+      // addDeliveryCost(withDelivery);
     }
+    // removeDeliveryCost(withDelivery);
     total.textContent = `${parseFloat(subTotal).toFixed(2)}€`;
   }
 }
+
 function getTotatlAllOrders() {
   let subTotal = 0;
   arrOrders.forEach((element) => {

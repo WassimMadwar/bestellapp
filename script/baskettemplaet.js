@@ -154,8 +154,9 @@ function createArticleInvoice() {
   const artInvoice = document.createElement("article");
   artInvoice.id = "artInvoice";
   const totOrders = createTotalOrdersDiv();
-  const deliveryCost = createDeliveryCostDiv();
-  artInvoice.append(totOrders, deliveryCost);
+  // const deliveryCost = createDeliveryCostDiv();
+  // artInvoice.append(totOrders, deliveryCost);
+  artInvoice.append(totOrders);
   return artInvoice;
 }
 function createTotalOrdersDiv() {
@@ -167,16 +168,23 @@ function createTotalOrdersDiv() {
   totOrders.append(lbl, totalOrders);
   return totOrders;
 }
+
 function createDeliveryCostDiv() {
+  const artInvoice = document.getElementById('artInvoice');
   const divDelev = document.createElement("div");
   divDelev.className = "invoice";
+  divDelev.id='delivery';
   const lblDelev = document.createElement("span");
   lblDelev.textContent = "Lieferkosten";
   const costlDelev = document.createElement("span");
   costlDelev.textContent = "5,00€";
   divDelev.append(lblDelev, costlDelev);
-  return divDelev;
+  // return divDelev;
+  artInvoice.append(divDelev);
 }
+// createDeliveryCostDiv();
+// status from element in secMeals
+
 // Logik
 function createTotalOrdersSpan() {
   const totalOrders = document.createElement("span");
