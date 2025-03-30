@@ -1,8 +1,4 @@
-function toggleMenu() {
-  const btnToggle = document.getElementById("menuToggle");
-  const menu = document.getElementById("menu");
-  menu.classList.toggle("menuClosed");
-}
+
 
 function toggleImgAll(isAll) {
   const allImg = document.getElementById("All0");
