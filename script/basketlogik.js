@@ -8,7 +8,7 @@ function toBasket(objDish) {
   }
 
   if (isArticleExistsInBasket(objOrder.artAmount, objOrder.artID)) {
-    increaseAmountArticle(objOrder);
+    updateAmountArticle(objOrder);
     return;
   } else {
     createArticleOrder(objOrder);
@@ -90,7 +90,7 @@ function updateObjOrderInDB(objOrder, opert) {
   switch (opert) {
     case "minus":
       console.log("okey minus one");
-
+      decreaseObjOrderInDB(objOrder);
       break;
     default:
       increaseObjOrderInDB(objOrder);
@@ -106,7 +106,10 @@ function increaseObjOrderInDB(objOrder) {
   // return true;
 }
 
-function decreaseObjOrderInDB(objOrder) {}
+function decreaseObjOrderInDB(objOrder) {
+  objOrder.artAmount -= 1;
+  objOrder.total = parseFloat((objOrder.total - objOrder.artPrice).toFixed(2));
+}
 function deleteObjOrderFromDB(artID) {
   const targetIndex = arrOrders.findIndex((obj) => obj.artID === artID);
   if (targetIndex !== -1) {
@@ -140,10 +143,13 @@ function getTotatlAllOrders() {
   arrOrders.forEach((element) => {
     subTotal += element.total;
   });
+  if (subTotal == 0) {
+    removeBasket();
+  }
   return subTotal;
 }
 
-function increaseAmountArticle(objOrder) {
+function updateAmountArticle(objOrder) {
   const newMaount = document.getElementById(objOrder.artName);
   newMaount.textContent = `${objOrder.artAmount}x`;
   updateTotalArticle(objOrder);
@@ -156,11 +162,17 @@ function updateTotalArticle(objOrder) {
 
 function increaseOne(objOrder) {
   updateObjOrderInDB(objOrder, opert);
-  increaseAmountArticle(objOrder);
+  updateAmountArticle(objOrder);
 }
+
 function decreaseOne(objOrder) {
-  const opert = "minus";
-  updateObjOrderInDB(objOrder, opert);
+  if (objOrder.artAmount == 1) {
+    removeArticleOrder(objOrder.artID);
+  } else {
+    const opert = "minus";
+    updateObjOrderInDB(objOrder, opert);
+    updateAmountArticle(objOrder);
+  }
 }
 
 function removeArticleOrder(artID) {
@@ -174,5 +186,13 @@ function deleteArticleFromBasket(artID) {
   const art = document.getElementById(`article${artID}`);
   if (art) {
     art.remove();
+  }
+}
+
+function removeBasket() {
+  // artBasket
+  const basket = document.getElementById("secBasket");
+  if (basket) {
+    basket.remove();
   }
 }

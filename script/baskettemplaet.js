@@ -94,12 +94,12 @@ function createAmountControl(objOrder) {
   return ctrAmountDiv;
 }
 
-function createDecreaseBtn() {
+function createDecreaseBtn(objOrder) {
   const decreaseButton = document.createElement("button");
   decreaseButton.type = "submit";
   decreaseButton.className = "ctr CT";
   decreaseButton.textContent = "-";
-  decreaseButton.onclick = () => decreaseOne();
+  decreaseButton.onclick = () => decreaseOne(objOrder);
   return decreaseButton;
 }
 function createAmountSpan(objOrder) {
