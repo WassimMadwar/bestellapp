@@ -14,7 +14,6 @@ function toBasket(objDish) {
     return;
   } else {
     createArticleOrder(objOrder);
-    // updateSectionInvoice();
   }
 }
 
@@ -33,6 +32,7 @@ function isArticleExistsInBasket(artAmount, artID) {
     return false;
   }
 }
+
 function saveObjOrderInDB(objDish) {
   if (isObjOrderInDBExists(objDish.Id)) {
     const objOrder = findObjOrderByID(objDish.Id);
@@ -52,6 +52,15 @@ function isObjOrderInDBExists(artID) {
   return false;
 }
 
+function findObjOrderByID(artID) {
+  const foundArticle = arrOrders.find((arrOrders) => arrOrders.artID === artID);
+  if (foundArticle) {
+    return foundArticle;
+  }
+
+  return false;
+}
+
 function setCurrentObjOrder(objDish) {
   const _objOrder = {
     artID: objDish.Id,
@@ -62,15 +71,6 @@ function setCurrentObjOrder(objDish) {
   };
 
   return _objOrder;
-}
-
-function findObjOrderByID(artID) {
-  const foundArticle = arrOrders.find((arrOrders) => arrOrders.artID === artID);
-  if (foundArticle) {
-    return foundArticle;
-  }
-
-  return false;
 }
 
 function getCurrentObjOrder(artID) {
@@ -105,13 +105,13 @@ function updateObjOrderInDB(objOrder, opert) {
 function increaseObjOrderInDB(objOrder) {
   objOrder.artAmount += 1;
   objOrder.total = parseFloat((objOrder.total + objOrder.artPrice).toFixed(2));
-  // return true;
 }
 
 function decreaseObjOrderInDB(objOrder) {
   objOrder.artAmount -= 1;
   objOrder.total = parseFloat((objOrder.total - objOrder.artPrice).toFixed(2));
 }
+
 function deleteObjOrderFromDB(artID) {
   const targetIndex = arrOrders.findIndex((obj) => obj.artID === artID);
   if (targetIndex !== -1) {
@@ -122,7 +122,7 @@ function deleteObjOrderFromDB(artID) {
 // update
 function updateSectionInvoice() {
   updateSubtotal();
-  updateTotalInvoice(withDelivery);
+  updateTotalInvoice();
 }
 
 function updateSubtotal() {
@@ -132,30 +132,31 @@ function updateSubtotal() {
   return totalOrders;
 }
 
-
-function removeDeliveryCost(status) {
+function removeDeliveryCost() {
+  if (isBasketExists()) {
   const delivery = document.getElementById('delivery');
-  delivery.remove();
-
-  createDeliveryCostDiv();
-}
-function addDeliveryCost(status) {
-  status=true;
-  if (status) {
-    
-    createDeliveryCostDiv();
+    delivery.remove();
+  updateTotalInvoice();
   }
 }
 
-function updateTotalInvoice(withDelivery) {
+function addDeliveryCost() {
+  if (isBasketExists()) {
+  const artInvoice = document.getElementById('artInvoice');
+  const deliveryCost =createDeliveryCostDiv();
+    artInvoice.append(deliveryCost);
+    updateTotalInvoice();
+
+  }
+}
+
+function updateTotalInvoice() {
   const total = document.getElementById("totalInvoice");
   let subTotal = getTotatlAllOrders();
   if (total) {
     if (withDelivery) {
       subTotal += 5;
-      // addDeliveryCost(withDelivery);
     }
-    // removeDeliveryCost(withDelivery);
     total.textContent = `${parseFloat(subTotal).toFixed(2)}€`;
   }
 }
@@ -212,7 +213,6 @@ function deleteArticleFromBasket(artID) {
 }
 
 function removeBasket() {
-  // artBasket
   const basket = document.getElementById("secBasket");
   if (basket) {
     basket.remove();

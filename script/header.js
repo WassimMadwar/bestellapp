@@ -113,9 +113,13 @@ function toggleDeliveryStatus() {
   const delivery = document.getElementById("divDeliv");
   const pickup = document.getElementById("divPickup");
   if (isDelivery(delivery, pickup)) {
-    return (withDelivery = true);
+    withDelivery = true
+    addDeliveryCost()
+    return ;
   } else if (notDelivery(delivery, pickup)) {
-    return (withDelivery = false);
+    withDelivery = false
+    removeDeliveryCost();
+    return ;
   }
 }
 

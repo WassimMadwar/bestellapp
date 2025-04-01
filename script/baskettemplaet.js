@@ -154,11 +154,16 @@ function createArticleInvoice() {
   const artInvoice = document.createElement("article");
   artInvoice.id = "artInvoice";
   const totOrders = createTotalOrdersDiv();
-  // const deliveryCost = createDeliveryCostDiv();
-  // artInvoice.append(totOrders, deliveryCost);
-  artInvoice.append(totOrders);
+  if (withDelivery) {
+  const deliveryCost = createDeliveryCostDiv();
+  artInvoice.append(totOrders, deliveryCost);
+  }else{
+    artInvoice.append(totOrders);
+
+  }
   return artInvoice;
 }
+
 function createTotalOrdersDiv() {
   const totOrders = document.createElement("div");
   totOrders.className = "invoice";
@@ -179,8 +184,8 @@ function createDeliveryCostDiv() {
   const costlDelev = document.createElement("span");
   costlDelev.textContent = "5,00€";
   divDelev.append(lblDelev, costlDelev);
-  // return divDelev;
-  artInvoice.append(divDelev);
+
+  return divDelev;
 }
 // createDeliveryCostDiv();
 // status from element in secMeals
@@ -248,6 +253,7 @@ function createArtKasse() {
   artKase.appendChild(btn);
   return artKase;
 }
+
 function createBuyBtn() {
   const btn = document.createElement("button");
   // btn.className = "CT";
