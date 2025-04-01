@@ -8,7 +8,6 @@ function createSectionBasket() {
 
   secBasket.append(artBasket, artKase);
   main.appendChild(secBasket);
-  // return secBasket;
 }
 
 function createArtBasket() {
@@ -43,13 +42,13 @@ function createMainBasket() {
   return mainBasket;
 }
 
-// Section All Order start
 function createSectionAllOrder() {
   const secOrders = document.createElement("section");
   secOrders.id = "allOrders";
 
   return secOrders;
 }
+
 function createArticleOrder(objOrder) {
   const secOrders = document.getElementById("allOrders");
   const artOrder = document.createElement("article");
@@ -71,6 +70,7 @@ function createNameDiv(artName) {
   titDish.appendChild(txt);
   return titDish;
 }
+
 function createInfoOrderDiv(objOrder) {
   const infoDiv = document.createElement("div");
   infoDiv.className = "infoArtOrder";
@@ -80,6 +80,7 @@ function createInfoOrderDiv(objOrder) {
   infoDiv.append(ctrAmountDiv, totalDiv, deleteDiv);
   return infoDiv;
 }
+
 function createAmountControl(objOrder) {
   const ctrAmountDiv = document.createElement("div");
   ctrAmountDiv.className = "ctrAmount";
@@ -187,17 +188,13 @@ function createDeliveryCostDiv() {
 
   return divDelev;
 }
-// createDeliveryCostDiv();
-// status from element in secMeals
 
-// Logik
 function createTotalOrdersSpan() {
   const totalOrders = document.createElement("span");
   totalOrders.id = "totalOrders";
 
   return totalOrders;
 }
-// Section Invoice end
 
 function createFooterBasket() {
   const footerBasket = document.createElement("footer");
@@ -209,6 +206,7 @@ function createFooterBasket() {
   footerBasket.append(secInvoice, artTotal);
   return footerBasket;
 }
+
 function createTotalArticle() {
   const art = document.createElement("article");
   art.id = "artTotal";
@@ -218,6 +216,7 @@ function createTotalArticle() {
   art.append(separtor, totalInvoiceD);
   return art;
 }
+
 function createTotalInvoiceDiv() {
   const divTotal = document.createElement("div");
   divTotal.className = "invoice";
@@ -256,7 +255,6 @@ function createArtKasse() {
 
 function createBuyBtn() {
   const btn = document.createElement("button");
-  // btn.className = "CT";
   btn.id = "btnBuy";
   btn.type = "submit";
   btn.innerHTML = `Zur Kasse ${iconSvg.iconKasse}`;
