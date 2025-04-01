@@ -1,5 +1,3 @@
-/* Section Basket start */
-
 #secBasket {
     width: 300px;
     right: 0;
@@ -13,8 +11,6 @@
     top: 0px;
     min-height: 100vh;
 }
-
-/* ------- */
 
 #headerBasket {
     padding: 12px;
@@ -35,12 +31,8 @@
     gap: 10px;
 }
 
-/* ------- */
-
-
 .artOrder {
     padding: 8px;
-    /* display: flex; */
 }
 
 .infoArtOrder {
@@ -63,29 +55,18 @@
     text-align: center;
     height: 40px;
     width: 40px;
-    /* background-color: transparent; */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     border: none;
     padding-bottom: 5px;
-
 }
-
-
-/* .icoDelete {
-    color: #FD5B4F;
-    display: flex;
-    align-items: center;
-    background-color: white;
-} */
 
 #artInvoice {
     padding: 8px;
 
 }
-
 
 .invoice {
     display: flex;
@@ -93,8 +74,6 @@
     font-size: 20px;
     padding: 6px;
 }
-
-
 
 #totalInvoice {
     padding: 12px;
@@ -119,7 +98,6 @@
     align-items: center;
     font-weight: bold;
     font-size: 24px;
-    /* background-color: transparent; */
 }
 
 #btnBuy:hover {
