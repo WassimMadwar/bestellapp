@@ -7,7 +7,7 @@
     max-width: 1440px;
     display: flex;
     color: #FD5B4F;
-    padding: 20px 10px;
+    padding:  10px;
     justify-content: space-between;
     margin: 0 auto;
     align-items: center;
@@ -22,7 +22,7 @@
 
 #divMenu button {
     background-color: transparent;
-    padding: 10px;
+    padding: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
