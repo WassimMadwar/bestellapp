@@ -217,6 +217,7 @@ function createTotalArticle() {
 
 function createTotalInvoiceDiv() {
   const divTotal = document.createElement("div");
+  divTotal.id='divTotal';
   divTotal.className = "invoice";
   const lblTotal = createLblTotalSpan();
   const total = createTotalSpan();
