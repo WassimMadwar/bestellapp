@@ -1,12 +1,7 @@
 let withDelivery = false;
 const opert = "plus";
 
-const links = [
-  { href: "./index.html", text: "Start" },
-  { href: "#", text: "Kontakt" },
-  { href: "#", text: "Impressum" },
-  { href: "#", text: "Datenschutzerklärung" },
-];
+
 // i should leater intgretion object categories in allMeals !!!!
 const iconSvg = {
   iconKasse: `
@@ -168,4 +163,13 @@ const allMeals = [
   },
 ];
 
-arrOrders = [];
+const arrOrders = [];
+
+const statu = {
+  pickup: { imgSrc: "../assets/img/abholung.png", 
+    txt: "Abholung" },
+  delivery: {
+    imgSrc: "../assets/img/delivery.png",
+    txt: "Lieferung",
+  },
+};
