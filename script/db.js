@@ -130,8 +130,8 @@ const allMeals = [
       },
       {
         Id: 6,
-        imgSrc: "../assets/img/SalamiPizza.jpg",
-        name: "Salami Pizza",
+        imgSrc: "../assets/img/MargheritaPizza.jpg",
+        name: "4Käse Pizza",
         info: "Tomatensoße, Salami, Käse",
         preis: 8.99,
       },
@@ -156,8 +156,8 @@ const allMeals = [
       },
       {
         Id: 9,
-        imgSrc: "../assets/img/PenneArrabiata.jpg",
-        name: "Penne Arrabiata",
+        imgSrc: "../assets/img/SpaghettiBolognese.jpg",
+        name: "Spaghetti Torento",
         info: "Tomatensoße, Chili",
         preis: 8.49,
       },
@@ -182,8 +182,8 @@ const allMeals = [
       },
       {
         Id: 12,
-        imgSrc: "../assets/img/GriechischerSalat.jpg",
-        name: "Griechischer Salad",
+        imgSrc: "../assets/img/rucolasalat.webp",
+        name: "Rucola Salad",
         info: "Feta, Oliven, Tomaten",
         preis: 5.99,
       },
