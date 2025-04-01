@@ -13,7 +13,8 @@ a {
 button {
     border: none;
     color: #FD5B4F;
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: white;
 }
 
 button:hover {
