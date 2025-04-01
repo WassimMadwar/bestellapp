@@ -107,23 +107,3 @@ function createNewNote() {
 
 
   
-// nav {
-//     padding-bottom: 4px;
-// }
-
-// nav a {
-//     margin-right: 12px;
-//     /* color: black; */
-//     font-size: 20px;
-// }
-
-// nav a:last-child {
-//     margin-right: 0;
-// }
-
-// nav a:hover {
-//     text-decoration: 4px underline;
-//     text-underline-offset: 10px;
-// }
-
-/* Nav end */
