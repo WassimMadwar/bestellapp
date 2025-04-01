@@ -102,20 +102,34 @@ const allMeals = [
         info: "Tomaten, Gurken, Salat",
         preis: 4.99,
       },
+      {
+        Id: 3,
+        imgSrc: "../assets/img/ChickenSandwich.webp",
+        name: "Chicken Sandwich",
+        info: "Gegrilltes Hähnchen, Salat",
+        preis: 5.99,
+      },
     ],
   },
   {
     category: "Pizza",
     dishes: [
       {
-        Id: 3,
+        Id: 4,
         imgSrc: "../assets/img/MargheritaPizza.jpg",
         name: "Margherita",
         info: "Tomatensoße, Mozzarella",
         preis: 7.99,
       },
       {
-        Id: 4,
+        Id: 5,
+        imgSrc: "../assets/img/SalamiPizza.jpg",
+        name: "Salami Pizza",
+        info: "Tomatensoße, Salami, Käse",
+        preis: 8.99,
+      },
+      {
+        Id: 6,
         imgSrc: "../assets/img/SalamiPizza.jpg",
         name: "Salami Pizza",
         info: "Tomatensoße, Salami, Käse",
@@ -127,14 +141,21 @@ const allMeals = [
     category: "Noodle",
     dishes: [
       {
-        Id: 5,
+        Id: 7,
         imgSrc: "../assets/img/SpaghettiBolognese.jpg",
         name: "Spaghetti Bolognese",
         info: "Hackfleischsoße, Parmesan",
         preis: 9.99,
       },
       {
-        Id: 6,
+        Id: 8,
+        imgSrc: "../assets/img/PenneArrabiata.jpg",
+        name: "Penne Arrabiata",
+        info: "Tomatensoße, Chili",
+        preis: 8.49,
+      },
+      {
+        Id: 9,
         imgSrc: "../assets/img/PenneArrabiata.jpg",
         name: "Penne Arrabiata",
         info: "Tomatensoße, Chili",
@@ -146,14 +167,21 @@ const allMeals = [
     category: "Salat",
     dishes: [
       {
-        Id: 7,
+        Id: 10,
         imgSrc: "../assets/img/CaesarSalad.jpg",
         name: "Caesar Salad",
         info: "Hähnchen, Parmesan, Dressing",
         preis: 6.99,
       },
       {
-        Id: 8,
+        Id: 11,
+        imgSrc: "../assets/img/GriechischerSalat.jpg",
+        name: "Griechischer Salad",
+        info: "Feta, Oliven, Tomaten",
+        preis: 5.99,
+      },
+      {
+        Id: 12,
         imgSrc: "../assets/img/GriechischerSalat.jpg",
         name: "Griechischer Salad",
         info: "Feta, Oliven, Tomaten",
