@@ -97,7 +97,7 @@ function createAmountControl(objOrder) {
 function createDecreaseBtn(objOrder) {
   const decreaseButton = document.createElement("button");
   decreaseButton.type = "submit";
-  decreaseButton.className = "ctr CT";
+  decreaseButton.className = "ctr";
   decreaseButton.textContent = "-";
   decreaseButton.onclick = () => decreaseOne(objOrder);
   return decreaseButton;
@@ -112,7 +112,7 @@ function createAmountSpan(objOrder) {
 function createIncreaseBtn(objOrder) {
   const increaseButton = document.createElement("button");
   increaseButton.type = "submit";
-  increaseButton.className = "ctr CT";
+  increaseButton.className = "ctr";
   increaseButton.textContent = "+";
   increaseButton.onclick = () => increaseOne(objOrder);
   return increaseButton;
@@ -131,8 +131,8 @@ function createTotalOrderDiv(objOrder) {
 }
 function createBtnDelete(artID) {
   const deleteDiv = document.createElement("div");
-  const spanDelete = document.createElement("span");
-  spanDelete.className = "icoDelete CT";
+  const spanDelete = document.createElement("button");
+  spanDelete.className = "icoDelete";
   spanDelete.innerHTML = `${iconSvg.iconDelete}`;
   deleteDiv.onclick = () => removeArticleOrder(artID);
   deleteDiv.appendChild(spanDelete);
@@ -250,7 +250,7 @@ function createArtKasse() {
 }
 function createBuyBtn() {
   const btn = document.createElement("button");
-  btn.className = "CT";
+  // btn.className = "CT";
   btn.id = "btnBuy";
   btn.type = "submit";
   btn.innerHTML = `Zur Kasse ${iconSvg.iconKasse}`;

@@ -13,6 +13,7 @@ a {
 button {
     border: none;
     color: #FD5B4F;
+    background-color: transparent;
 }
 
 button:hover {
@@ -43,10 +44,10 @@ button:hover {
     width: 100%;
 }
 
-.CT {
+/* .CT {
     color: #FD5B4F;
     cursor: pointer;
-}
+} */
 
 .separtor {
     height: 2px;
