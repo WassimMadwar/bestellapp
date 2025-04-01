@@ -12,6 +12,8 @@ a {
 
 button {
     border: none;
+    color: #FD5B4F;
+
 }
 
 button:hover {
@@ -53,20 +55,19 @@ button:hover {
     background-color: #FD5B4F;
 }
 
-
+.onSelected {
+    padding: 3px;
+    border: 2px solid #FD5B4F;
+    /* border-radius: 100%; */
+    /* color: #FD5B4F; */
+}
 #main {
     max-width: 1440px;
     margin: 0 auto;
     display: flex;
 }
 
-/* to delete */
-.testblok {
-    /* width: 200px; */
-    height: 200px;
-    background-color: red;
-    margin: 10px;
-}
+
 .ctr:hover,
 .icoDelete:hover,
 .btnAddMeale:hover,
