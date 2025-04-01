@@ -103,6 +103,7 @@ function createDecreaseBtn(objOrder) {
   decreaseButton.onclick = () => decreaseOne(objOrder);
   return decreaseButton;
 }
+
 function createAmountSpan(objOrder) {
   const amountSpan = document.createElement("span");
   amountSpan.id = objOrder.artName;
@@ -110,6 +111,7 @@ function createAmountSpan(objOrder) {
   amountSpan.textContent = `${objOrder.artAmount}x`;
   return amountSpan;
 }
+
 function createIncreaseBtn(objOrder) {
   const increaseButton = document.createElement("button");
   increaseButton.type = "submit";
@@ -130,6 +132,7 @@ function createTotalOrderDiv(objOrder) {
   totalDiv.appendChild(totalSpan);
   return totalDiv;
 }
+
 function createBtnDelete(artID) {
   const deleteDiv = document.createElement("div");
   const spanDelete = document.createElement("button");
@@ -139,10 +142,6 @@ function createBtnDelete(artID) {
   deleteDiv.appendChild(spanDelete);
   return deleteDiv;
 }
-
-// Section All Order end
-
-// Section Invoice start
 
 function createSectionInvoice() {
   const secInvoice = document.createElement("section");
@@ -160,7 +159,6 @@ function createArticleInvoice() {
   artInvoice.append(totOrders, deliveryCost);
   }else{
     artInvoice.append(totOrders);
-
   }
   return artInvoice;
 }

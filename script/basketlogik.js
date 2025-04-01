@@ -91,15 +91,13 @@ function addObjOrderInDB(objOrder) {
 function updateObjOrderInDB(objOrder, opert) {
   switch (opert) {
     case "minus":
-      console.log("okey minus one");
       decreaseObjOrderInDB(objOrder);
       break;
     default:
       increaseObjOrderInDB(objOrder);
       break;
   }
-
-  return true;
+  // return true;
 }
 
 function increaseObjOrderInDB(objOrder) {
@@ -119,7 +117,6 @@ function deleteObjOrderFromDB(artID) {
   }
 }
 
-// update
 function updateSectionInvoice() {
   updateSubtotal();
   updateTotalInvoice();
@@ -177,6 +174,7 @@ function updateAmountArticle(objOrder) {
   newMaount.textContent = `${objOrder.artAmount}x`;
   updateTotalArticle(objOrder);
 }
+
 function updateTotalArticle(objOrder) {
   const newTotal = document.getElementById("total" + objOrder.artID);
   newTotal.textContent = `${parseFloat(objOrder.total).toFixed(2)}€`;
@@ -199,7 +197,6 @@ function decreaseOne(objOrder) {
 }
 
 function removeArticleOrder(artID) {
-  console.log("=============================================");
   deleteObjOrderFromDB(artID);
   deleteArticleFromBasket(artID);
   updateSectionInvoice();
