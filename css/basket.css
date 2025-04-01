@@ -10,6 +10,9 @@
     position: sticky;
     top: 0px;
     min-height: 100vh;
+    /* delete under  */
+    /* overflow-y: auto; */
+    /* max-height: 100vh; */
 }
 
 #headerBasket {
@@ -75,12 +78,13 @@
     padding: 6px;
 }
 
-#totalInvoice {
+#divTotal{
+    margin-bottom: 60px;
     padding: 12px;
 }
 
 #artKase {
-    bottom: 0;
+    bottom: 0px;
     position: fixed;
     display: flex;
     justify-content: center;
