@@ -13,12 +13,10 @@ a {
 button {
     border: none;
     color: #FD5B4F;
-
 }
 
 button:hover {
     cursor: pointer;
-    /* border: 1px solid red; */
 }
 
 ::-webkit-scrollbar {
@@ -58,8 +56,7 @@ button:hover {
 .onSelected {
     padding: 3px;
     border: 2px solid #FD5B4F;
-    /* border-radius: 100%; */
-    /* color: #FD5B4F; */
+
 }
 #main {
     max-width: 1440px;
@@ -67,14 +64,11 @@ button:hover {
     display: flex;
 }
 
-
 .ctr:hover,
 .icoDelete:hover,
 .btnAddMeale:hover,
 .imgCategory:hover {
     padding: 3px;
-    /* padding-top: 9px; */
-    /* padding-bottom: 16px; */
     cursor: pointer;
     border: 2px solid #FD5B4F;
     border-radius: 100%;
