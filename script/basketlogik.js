@@ -120,6 +120,7 @@ function deleteObjOrderFromDB(artID) {
 function updateSectionInvoice() {
   updateSubtotal();
   updateTotalInvoice();
+  scrollToBottom();
 }
 
 function updateSubtotal() {
@@ -215,4 +216,16 @@ function removeBasket() {
     basket.remove();
     toggleWidthSectionMeals();
   }
+}
+
+function scrollToBottom() {
+  // const basket = document.getElementById("artBasket");
+  // if (basket.lastElementChild) {
+  //     basket.lastElementChild.scrollIntoView({ behavior: "smooth", block: "end" });
+  //     console.log('trtrt');
+  //     // basket.scrollTop = basket.scrollHeight;
+  // }
+  // basket.scrollIntoView({ behavior: "smooth", block: "end" });
+  //     console.log('trtrt');
+  //     basket.scrollTop = basket.scrollHeight;
 }
