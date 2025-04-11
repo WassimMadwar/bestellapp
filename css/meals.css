@@ -93,3 +93,14 @@
     padding-bottom: 19px;
 }
 
+@media (max-width: 840px){
+    .imgCategory{
+        height: 60px;
+    }
+    .imgDish {
+        height: 130px;
+    }
+}
+@media (max-width: 680px){
+
+}
