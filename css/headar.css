@@ -7,7 +7,7 @@
     max-width: 1440px;
     display: flex;
     color: #FD5B4F;
-    padding:  10px;
+    padding: 10px;
     justify-content: space-between;
     margin: 0 auto;
     align-items: center;
@@ -67,20 +67,20 @@
     border-radius: 4px;
 }
 
-@media (min-width: 739px) {
+@media (min-width: 720px) {
     #menuToggle {
         display: none;
     }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 720px) {
     #headerContent {
         align-items: center;
     }
 
     #menuToggle:hover {
         padding-top: 4px;
-        filter: drop-shadow(0px 0px 0.5px #403b3b);
+        filter: drop-shadow(0px 0px 0.5px #FD5B4F);
         cursor: pointer;
     }
 
