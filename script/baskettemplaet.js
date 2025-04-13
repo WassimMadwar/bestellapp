@@ -27,15 +27,14 @@ function createHeaderBasket() {
 
   const txtContent = document.createElement("h2");
   txtContent.innerHTML = `Warenkorb${iconSvg.iconBasket}`;
-headerBasket.onclick = () => openBasket();
+  headerBasket.onclick = () => openBasket();
   headerBasket.appendChild(txtContent);
   return headerBasket;
 }
 function openBasket() {
-  const basketSection = document.getElementById('secBasket');
+  const basketSection = document.getElementById("secBasket");
   if (basketSection) {
-    basketSection.classList.toggle('open');
-    
+    basketSection.classList.toggle("open");
   }
 }
 function createMainBasket() {
@@ -161,9 +160,9 @@ function createArticleInvoice() {
   artInvoice.id = "artInvoice";
   const totOrders = createTotalOrdersDiv();
   if (withDelivery) {
-  const deliveryCost = createDeliveryCostDiv();
-  artInvoice.append(totOrders, deliveryCost);
-  }else{
+    const deliveryCost = createDeliveryCostDiv();
+    artInvoice.append(totOrders, deliveryCost);
+  } else {
     artInvoice.append(totOrders);
   }
   return artInvoice;
@@ -180,10 +179,10 @@ function createTotalOrdersDiv() {
 }
 
 function createDeliveryCostDiv() {
-  const artInvoice = document.getElementById('artInvoice');
+  const artInvoice = document.getElementById("artInvoice");
   const divDelev = document.createElement("div");
   divDelev.className = "invoice";
-  divDelev.id='delivery';
+  divDelev.id = "delivery";
   const lblDelev = document.createElement("span");
   lblDelev.textContent = "Lieferkosten";
   const costlDelev = document.createElement("span");
@@ -223,7 +222,7 @@ function createTotalArticle() {
 
 function createTotalInvoiceDiv() {
   const divTotal = document.createElement("div");
-  divTotal.id='divTotal';
+  divTotal.id = "divTotal";
   divTotal.className = "invoice";
   const lblTotal = createLblTotalSpan();
   const total = createTotalSpan();
