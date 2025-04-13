@@ -3,10 +3,12 @@
     flex-direction: column;
     width: 100%;
 }
-.mealsUndBasket{
+
+.mealsUndBasket {
     width: calc(100% - 300px);
-    
+
 }
+
 .mainImg {
     height: 234px;
     width: 100%;
@@ -51,6 +53,7 @@
 .formDish:hover {
     background-color: rgba(127, 255, 212, 0.163);
 }
+
 .dataDish {
     display: flex;
     flex-direction: column;
@@ -60,7 +63,7 @@
     padding-left: 11px;
 }
 
-.dataDish :last-child{
+.dataDish :last-child {
     font-weight: bold;
     color: gold;
 }
@@ -93,14 +96,19 @@
     padding-bottom: 19px;
 }
 
-@media (max-width: 840px){
-    .imgCategory{
+@media (max-width: 840px) {
+    .imgCategory {
         height: 60px;
     }
+
     .imgDish {
         height: 130px;
     }
 }
-@media (max-width: 680px){
 
+@media (max-width: 720px) {
+    .secMeals {
+
+        width: 100%;
+    }
 }
