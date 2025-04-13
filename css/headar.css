@@ -1,6 +1,9 @@
 #header {
-    background-color: rgba(127, 255, 212, 0.712);
+    background-color: rgb(127, 255, 212);
     position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 10050;
 }
 
 #headerContent {
@@ -17,7 +20,6 @@
     display: flex;
     border: 3px solid white;
     border-radius: 33px;
-
 }
 
 #divMenu button {
@@ -100,11 +102,13 @@
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
         transition: all 75ms ease-in-out;
-        z-index: 1;
+        z-index: 2000;
         padding: 10px 0;
     }
 
     #menu {
         top: 100%;
     }
+    
+
 }
