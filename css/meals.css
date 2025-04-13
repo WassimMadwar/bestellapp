@@ -6,7 +6,6 @@
 
 .mealsUndBasket {
     width: calc(100% - 300px);
-
 }
 
 .mainImg {
@@ -47,7 +46,6 @@
     border-radius: 25px;
     padding: 6px;
     margin-bottom: 26px;
-
 }
 
 .formDish:hover {
@@ -108,7 +106,30 @@
 
 @media (max-width: 720px) {
     .secMeals {
-
         width: 100%;
+        margin-bottom: 60px;
+    }
+}
+@media (max-width: 430px) {
+    #Categories{
+        flex-wrap: wrap;
+    }
+    .Category{
+        padding-top:  5px;
+    }
+    .formDish{
+        flex-direction: column-reverse;
+        margin-bottom: 10px;
+    }
+    .imgDish{
+        height: 80px;
+        margin-top: 1px;
+        /* margin-bottom: 1px; */
+    }
+    .dataDish{
+        margin-top: 0;
+        font-size: small;
+        margin-top: 1px;
+        margin-bottom: 5px;
     }
 }
