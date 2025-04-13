@@ -14,7 +14,6 @@ function loadContent() {
   createAllCategories();
 }
 
-
 function createMain() {
   const main = document.createElement("main");
   main.id = "main";
@@ -225,9 +224,9 @@ function createFooterMeals() {
   return footer;
 }
 function toggleWidthSectionMeals() {
-  const secMeals= document.getElementById('secMeals');
+  const secMeals = document.getElementById("secMeals");
   if (secMeals) {
-    secMeals.classList.toggle('mealsUndBasket');
+    secMeals.classList.toggle("mealsUndBasket");
   }
   return;
 }
