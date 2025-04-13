@@ -27,11 +27,17 @@ function createHeaderBasket() {
 
   const txtContent = document.createElement("h2");
   txtContent.innerHTML = `Warenkorb${iconSvg.iconBasket}`;
-
+headerBasket.onclick = () => openBasket();
   headerBasket.appendChild(txtContent);
   return headerBasket;
 }
-
+function openBasket() {
+  const basketSection = document.getElementById('secBasket');
+  if (basketSection) {
+    basketSection.classList.toggle('open');
+    
+  }
+}
 function createMainBasket() {
   const mainBasket = document.createElement("main");
   mainBasket.id = "mainBasket";
