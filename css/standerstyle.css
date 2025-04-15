@@ -47,6 +47,7 @@ button:hover {
 .footerContainer {
     height: auto;
     display: flex;
+    bottom: 0;
     background-color: #032B35;
     align-items: center;
     justify-content: space-between;
@@ -132,7 +133,7 @@ button:hover {
 }
 
 @media (max-width: 430px) {
-    .footerContainer{
+    .footerContainer {
         font-size: 12px;
     }
 }
