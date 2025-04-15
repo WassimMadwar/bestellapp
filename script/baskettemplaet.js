@@ -261,6 +261,7 @@ function createBuyBtn() {
   const btn = document.createElement("button");
   btn.id = "btnBuy";
   btn.type = "submit";
+  btn.onclick = creatConfirmationOrder;
   btn.innerHTML = `Zur Kasse ${iconSvg.iconKasse}`;
   return btn;
 }
