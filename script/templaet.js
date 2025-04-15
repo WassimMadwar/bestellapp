@@ -29,8 +29,8 @@ function createSecMeals() {
   secMeals.className = "secMeals";
   const headerMeals = createHeaderSecMeals();
   const mainMeals = createMainMeals();
-
-  secMeals.append(headerMeals, mainMeals);
+const footerMeals = createFooterMeals();
+  secMeals.append(headerMeals, mainMeals,footerMeals);
   return secMeals;
 }
 
@@ -220,7 +220,12 @@ function createBtnAddDish(objDish) {
 function createFooterMeals() {
   const footer = document.createElement("footer");
   footer.id = "footerMeals";
-  footer.textContent = "ctr next page";
+  footer.innerHTML = `
+        <div class="footerContainer">
+        <a href="./impressum.html" target="_blank">Impressum</a>
+        <a href="./madwarsoft.html" target="_blank">Madwarsoft</a>
+        <a href="./datenschutzDE.html" target="_blank">Datenschutz</a>
+      </div>`;
   return footer;
 }
 function toggleWidthSectionMeals() {

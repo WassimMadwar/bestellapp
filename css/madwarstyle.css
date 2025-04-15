@@ -24,7 +24,6 @@ a {
     display: block;
 }
 
-
 .footerContainer {
     height: 60px;
     display: flex;
@@ -36,7 +35,6 @@ a {
     padding-bottom: 12px;
     font-size: 18px;
     color: #FD5B4F;
-
 }
 
 .myWeb {

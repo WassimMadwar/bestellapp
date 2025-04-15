@@ -97,7 +97,6 @@ function updateObjOrderInDB(objOrder, opert) {
       increaseObjOrderInDB(objOrder);
       break;
   }
-  // return true;
 }
 
 function increaseObjOrderInDB(objOrder) {
@@ -120,7 +119,6 @@ function deleteObjOrderFromDB(artID) {
 function updateSectionInvoice() {
   updateSubtotal();
   updateTotalInvoice();
-  scrollToBottom();
 }
 
 function updateSubtotal() {
@@ -144,7 +142,6 @@ function addDeliveryCost() {
   const deliveryCost =createDeliveryCostDiv();
     artInvoice.append(deliveryCost);
     updateTotalInvoice();
-
   }
 }
 
@@ -218,14 +215,3 @@ function removeBasket() {
   }
 }
 
-function scrollToBottom() {
-  // const basket = document.getElementById("artBasket");
-  // if (basket.lastElementChild) {
-  //     basket.lastElementChild.scrollIntoView({ behavior: "smooth", block: "end" });
-  //     console.log('trtrt');
-  //     // basket.scrollTop = basket.scrollHeight;
-  // }
-  // basket.scrollIntoView({ behavior: "smooth", block: "end" });
-  //     console.log('trtrt');
-  //     basket.scrollTop = basket.scrollHeight;
-}

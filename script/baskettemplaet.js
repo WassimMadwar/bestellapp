@@ -31,12 +31,14 @@ function createHeaderBasket() {
   headerBasket.appendChild(txtContent);
   return headerBasket;
 }
+
 function openBasket() {
   const basketSection = document.getElementById("secBasket");
   if (basketSection) {
     basketSection.classList.toggle("open");
   }
 }
+
 function createMainBasket() {
   const mainBasket = document.createElement("main");
   mainBasket.id = "mainBasket";

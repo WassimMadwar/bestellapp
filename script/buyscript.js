@@ -33,7 +33,7 @@ function showProcessingSpinner(content) {
 
 function showThankYouAndRedirect(content) {
   const thankText = document.createElement("p");
-  thankText.textContent = "Ihre Bestellung wurde erfolgreich bearbeitet!";
+  thankText.textContent = "Ihre Bestellung wurde erfolgreich bearbeitet ! ";
 
   const noteText = document.createElement("p");
   noteText.textContent =
