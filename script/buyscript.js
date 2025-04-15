@@ -1,24 +1,46 @@
-function openConfirmation(imgData, i) {
-  let currentImg = i;
-  const boxDialog = document.createElement("dialog");
-  boxDialog.classList.add("box_privew");
-  boxDialog.id = "dialog5";
-  const navig = document.createElement("div");
-  navig.id = "navig";
-  navig.classList.add("box_navi");
-  const _imgBig = renderCurrentImage(imgData.img_src);
-  const _rightBtn = createBtnRight();
-  const _leftBtn = createBtnLeft();
-  navig.append(_leftBtn, _imgBig, _rightBtn);
-  const _disc = createDiscription(imgData.img_capt, currentImg);
-  const _btnClose = createBtnClose();
-  boxDialog.append(navig, _disc, _btnClose);
-  document.body.appendChild(boxDialog);
-  _btnClose.onclick = () => closePreview();
-  UpdateObjImg(currentImg);
-  boxDialog.showModal();
-  backToGallery();
+function creatConfirmationOrder() {
+  const content = createOverlay();
+  showProcessingSpinner(content);
 }
-function creatConfirmationOrder(params) {}
 
-function creatConfirmationImg(params) {}
+function createOverlay() {
+  const overlay = document.createElement("div");
+  overlay.className = "overlay";
+
+  const content = document.createElement("div");
+  content.className = "overlay-content";
+
+  overlay.appendChild(content);
+  document.body.appendChild(overlay);
+
+  return content;
+}
+
+function showProcessingSpinner(content) {
+  const spinner = document.createElement("div");
+  spinner.className = "spinner";
+
+  const text = document.createElement("p");
+  text.textContent = "Ihre Bestellung wird bearbeitet...";
+
+  content.append(spinner, text);
+  setTimeout(() => {
+    spinner.remove();
+    text.remove();
+    showThankYouAndRedirect(content);
+  }, 3000);
+}
+
+function showThankYouAndRedirect(content) {
+  const thankText = document.createElement("p");
+  thankText.textContent = "Ihre Bestellung wurde erfolgreich bearbeitet!";
+
+  const noteText = document.createElement("p");
+  noteText.textContent =
+    "Guten Appetit wünscht Ihnen das Team von Bestellendo ❤️";
+
+  content.append(thankText, noteText);
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 3000);
+}
