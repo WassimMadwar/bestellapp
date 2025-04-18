@@ -1,7 +1,6 @@
 let withDelivery = false;
 const opert = "plus";
 
-
 // i should leater intgretion object categories in allMeals !!!!
 const iconSvg = {
   iconKasse: `
@@ -90,21 +89,21 @@ const allMeals = [
     dishes: [
       {
         Id: 1,
-        imgSrc: "../assets/img/ChickenSandwich.webp",
+        imgSrc: "./assets/img/ChickenSandwich.webp",
         name: "Chicken Sandwich",
         info: "Gegrilltes Hähnchen, Salat",
         preis: 5.99,
       },
       {
         Id: 2,
-        imgSrc: "../assets/img/VeggieSandwich.jpg",
+        imgSrc: "./assets/img/VeggieSandwich.jpg",
         name: "Veggie Sandwich",
         info: "Tomaten, Gurken, Salat",
         preis: 4.99,
       },
       {
         Id: 3,
-        imgSrc: "../assets/img/ChickenSandwich.webp",
+        imgSrc: "./assets/img/ChickenSandwich.webp",
         name: "Chicken Sandwich",
         info: "Gegrilltes Hähnchen, Salat",
         preis: 5.99,
@@ -116,21 +115,21 @@ const allMeals = [
     dishes: [
       {
         Id: 4,
-        imgSrc: "../assets/img/MargheritaPizza.jpg",
+        imgSrc: "./assets/img/MargheritaPizza.jpg",
         name: "Margherita",
         info: "Tomatensoße, Mozzarella",
         preis: 7.99,
       },
       {
         Id: 5,
-        imgSrc: "../assets/img/SalamiPizza.jpg",
+        imgSrc: "./assets/img/SalamiPizza.jpg",
         name: "Salami Pizza",
         info: "Tomatensoße, Salami, Käse",
         preis: 8.99,
       },
       {
         Id: 6,
-        imgSrc: "../assets/img/MargheritaPizza.jpg",
+        imgSrc: "./assets/img/MargheritaPizza.jpg",
         name: "4Käse Pizza",
         info: "Tomatensoße, Salami, Käse",
         preis: 8.99,
@@ -142,21 +141,21 @@ const allMeals = [
     dishes: [
       {
         Id: 7,
-        imgSrc: "../assets/img/SpaghettiBolognese.jpg",
+        imgSrc: "./assets/img/SpaghettiBolognese.jpg",
         name: "Spaghetti Bolognese",
         info: "Hackfleischsoße, Parmesan",
         preis: 9.99,
       },
       {
         Id: 8,
-        imgSrc: "../assets/img/PenneArrabiata.jpg",
+        imgSrc: "./assets/img/PenneArrabiata.jpg",
         name: "Penne Arrabiata",
         info: "Tomatensoße, Chili",
         preis: 8.49,
       },
       {
         Id: 9,
-        imgSrc: "../assets/img/SpaghettiBolognese.jpg",
+        imgSrc: "./assets/img/SpaghettiBolognese.jpg",
         name: "Spaghetti Torento",
         info: "Tomatensoße, Chili",
         preis: 8.49,
@@ -168,21 +167,21 @@ const allMeals = [
     dishes: [
       {
         Id: 10,
-        imgSrc: "../assets/img/CaesarSalad.jpg",
+        imgSrc: "./assets/img/CaesarSalad.jpg",
         name: "Caesar Salad",
         info: "Hähnchen, Parmesan, Dressing",
         preis: 6.99,
       },
       {
         Id: 11,
-        imgSrc: "../assets/img/GriechischerSalat.jpg",
+        imgSrc: "./assets/img/GriechischerSalat.jpg",
         name: "Griechischer Salad",
         info: "Feta, Oliven, Tomaten",
         preis: 5.99,
       },
       {
         Id: 12,
-        imgSrc: "../assets/img/rucolasalat.webp",
+        imgSrc: "./assets/img/rucolasalat.webp",
         name: "Rucola Salad",
         info: "Feta, Oliven, Tomaten",
         preis: 5.99,
@@ -194,10 +193,9 @@ const allMeals = [
 const arrOrders = [];
 
 const statu = {
-  pickup: { imgSrc: "../assets/img/abholung.png", 
-    txt: "Abholung" },
+  pickup: { imgSrc: "./assets/img/abholung.png", txt: "Abholung" },
   delivery: {
-    imgSrc: "../assets/img/delivery.png",
+    imgSrc: "./assets/img/delivery.png",
     txt: "Lieferung",
   },
 };
