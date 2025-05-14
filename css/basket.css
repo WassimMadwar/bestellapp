@@ -134,13 +134,19 @@
 
     #secBasket {
         position: fixed;
-        top: 72.8px;
-        bottom: 0;
         width: 100%;
+        /* for 17.5 */
+        /* top: 72.8px;
         max-height: 90vh;
+        transform: translateY(88%); */
+        
+        /* for 15.6 inch */
+        top: 8.6%;
+        max-height: 92vh;
+        transform: translateY(91%);
+
         background-color: white;
         z-index: 1000;
-        transform: translateY(88%);
         transition: transform 0.175s ease-in-out;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         overflow-y: auto;
